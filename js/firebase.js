@@ -194,12 +194,8 @@ isSignIn((uid) => {
 // 	})
 // }
 function getUserImages(id, callback) {
-	let user = false;
-	if(id === userUid){
-		user = true;
-	}
 	onValue(ref(db, `users/${id}/images/`), (data) => {
-		callback(data.val() || {}, user);
+		callback(data.val() || {}, id);
 	})
 }
 
@@ -249,7 +245,22 @@ function removeLike(uid, id, likeId){
 		.catch(err => console.log(err));
 }
 
-export {signOutUser, createUser, signIn, getUsers, getUserImages, getUserData, uploadProcess, readUrl, getLikes, pushLike, removeLike}
+//Comments
+function getComments(ownerId, id, callback, owner){
+	onValue(ref(db, `users/${ownerId}/images/${id}/comments`), (data) => {
+		callback(data.val() || {}, owner);
+	})
+}
+
+function pushComment(ownerId, id, message) {
+	push(ref(db, `users/${ownerId}/images/${id}/comments/`), message)
+		.then((ref) => {
+			console.log(ref)
+		})
+		.catch(err => console.log(err));
+}
+
+export {getComments, pushComment, signOutUser, createUser, signIn, getUsers, getUserImages, getUserData, uploadProcess, readUrl, getLikes, pushLike, removeLike}
 
 
 

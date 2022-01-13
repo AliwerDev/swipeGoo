@@ -1,5 +1,6 @@
 //creat element
-import {getLikes, pushLike, removeLike} from "./firebase.js";
+import {getComments, getLikes, getUserData, pushLike, removeLike} from "./firebase.js";
+import {renderBigImg} from "./bigImg.js";
 
 const myCreateElement = (elementName, attrs = {}, father) => {
 	const element = document.createElement(elementName);
@@ -21,7 +22,7 @@ const getDate = () => {
 	return (`${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} (${date.getHours()} : ${date.getMinutes()})`);
 }
 
-const renderImgBox = (imagesData, user) => {
+const renderImgBox = (imagesData, ownerUid) => {
 	imgGallery.innerHTML = "";
 	imgGallery.classList.remove("d-none")
 	apiGallery.classList.add("d-none");
@@ -39,7 +40,7 @@ const renderImgBox = (imagesData, user) => {
 		const span = myCreateElement("span", {}, imgBox);
 		const download = myCreateElement("div", {className: "download", innerHTML: `<i class="fas fa-download"></i>`}, span);
 		const likes = myCreateElement("div", {className: "comment"}, span);
-		const comment = myCreateElement("div", {className: "cloud", innerHTML: `<i class="fas fa-download"></i>`}, span);
+		const comment = myCreateElement("div", {className: "cloud", innerHTML: `<i class="far fa-comment"></i>`}, span);
 		const nuqta = myCreateElement("div", {className: "nuqta", innerHTML: `<i class="fas fa-ellipsis-h"></i>`}, span)
 
 		const likeBtn = myCreateElement("i", {className: "fas fa-heart text-white", }, likes);
@@ -66,8 +67,28 @@ const renderImgBox = (imagesData, user) => {
 			}else{
 				removeLike(imgData.ownerId, id, userUid);
 			}
+		});
+
+		let ownerObj;
+		function getOwnerData(data) {
+			ownerObj = {
+				imgUrl: imgData.url,
+				imgTitle: imgData.title || "",
+				imgInfo: imgData.info || "",
+				userImg: data.userImg,
+				userName: data.userName,
+				bio: data.bio || "",
+				ownerId: imgData.ownerId,
+				imgId: id,
+			}
+		}
+		comment.addEventListener('click', () => {
+			getUserData(imgData.ownerId, getOwnerData);
+			getComments(imgData.ownerId, id, renderBigImg, ownerObj)
 		})
 	})
 }
+
+
 
 export { renderImgBox, myCreateElement, getRandnum, getDate }

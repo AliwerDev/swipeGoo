@@ -11,7 +11,7 @@ const bgHideOut = document.querySelector(".bgHideOut");
 
 
 function renderProfile(data) {
-    profileMinImg.src = data.userImg || "http://cdn.onlinewebfonts.com/svg/img_264570.png";
+    profileMinImg.src = data.userImg || userDefaultImg;
     openProfile.classList.remove("d-none");
     logInBox.classList.add("d-none");
     userProfileModal.innerHTML = "";
@@ -70,7 +70,7 @@ function renderProfile(data) {
     const userImg = myCreateElement("img", {
         id: "profile",
         className: "userImg",
-        src: data.userImg || "http://cdn.onlinewebfonts.com/svg/img_264570.png",
+        src: data.userImg || userDefaultImg,
         alt: data.userName
     }, avatar);
     const changeUserImg = myCreateElement("button", {

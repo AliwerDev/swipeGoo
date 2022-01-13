@@ -1,9 +1,10 @@
 import { myCreateElement } from "./functions.js";
+import {getUserData, pushComment} from "./firebase.js";
 
-const renderBigImg = (data, owner, father) => {
+const renderBigImg = (comments, owner) => {
 	const container = myCreateElement("div", {
 		className: "container",
-	}, myCreateElement("section", {id: "chat"}, father));
+	}, myCreateElement("section", {id: "chat"}, document.querySelector("body")));
 	const row = myCreateElement("div", {
 		className: "row py-4",
 	}, container);
@@ -13,8 +14,8 @@ const renderBigImg = (data, owner, father) => {
 		className: "col-md-6 col-12 left",
 		innerHTML: `
 			<div class="img">
-                <img src="${data.url}" alt="${data.title}">
-                <div class="paragraph"><p>${data.paragraph}</p></div>
+                <img src="${owner.imgUrl}" alt="${owner.imgTitle || ""}">
+                <div class="paragraph"><p>${owner.ImgInfo || ""}</p></div>
              </div>
              <div class="d-flex my-2 mx-4 align-items-center userProfil gap-3" >
                 <img class="img-responsive" src="${owner.userImg}" alt="userimg">
@@ -25,40 +26,47 @@ const renderBigImg = (data, owner, father) => {
             </div>
 `
 	}, row);
-
 	//Chat
 	const col2 = myCreateElement("div", {
 		className: "col-md-6 col-12 right",
 	}, row);
 
-}
+	const chatBody = myCreateElement("div", {className: "chat-body",}, col2);
+	const commentsArr = Object.values(comments);
+	commentsArr.map(comment => {
+		const messageBox = myCreateElement("div", {
+			className: "messageBox",
+		}, chatBody);
+		if(comment.userUid === userUid){
+			messageBox.classList.add("myMessage");
+		}
 
-`<section id="chat">
-   <div class="container">
-              <div class="row p-4 ">
-                <div class="col-md-6 col-12 left ">
-                  <div class="img">
-                    <img src="https://images.wallpaperscraft.com/image/single/trees_snow_winter_238021_3840x2160.jpg" alt="images">
-                    <div class="paragraph"><p>danfsjfsnnfdin</p></div>
-                  </div>
-                  <div class="d-flex my-2 mx-4 align-items-center userProfil gap-3" >
-                    <img class="img-responsive" src="https://www.pngkit.com/png/detail/429-4297972_search-log-in-to-your-teach-california-account.png" alt="userimg">
-                    <div>
-                      <h5>User Fullname</h5>
-                      <p>text about user profile</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-12 right ">
-                  <form action="" class="w-100 d-flex">
-                    <input  type="text" class="form-control py-2" placeholder="Message...">
-                    <button  type="submit" class="mx-2 btn">
-                      <i class="fab fa-telegram"></i>
-                    </button>
-                  </form>
-                </div>
-              </div>
-          </div>
- </section>`
+		const userImg = myCreateElement("img", {src: comment.userImg, alt: comment.userName}, messageBox);
+		const message = myCreateElement("div", {className: "message",}, messageBox);
+		const userName = myCreateElement("h4", {className: "userName", innerText: comment.userName}, message);
+		const messageText = myCreateElement("p", {className: "messageText", innerText: comment.message}, message);
+	})
+
+	const form = myCreateElement("form", {className: "w-100 d-flex",}, col2);
+	const input = myCreateElement("input", {className: "form-control py-2", placeholder: "Commentary..."}, form);
+	const send = myCreateElement("button", {className: "mx-2 btn", type: "submit", innerHTML: `<i class="fab fa-telegram"></i>`}, form);
+
+	let messageObj = {};
+	function createObj(data) {
+		messageObj = {
+			message: input.value,
+			userName: data.userName,
+			userImg: data.userImg || userDefaultImg,
+			userUid: userUid,
+		}
+	}
+
+	send.addEventListener('click', (e) => {
+		e.preventDefault();
+		getUserData(userUid, createObj);
+
+		pushComment(owner.ownerId, owner.imgId, messageObj);
+	})
+}
 
 export { renderBigImg }

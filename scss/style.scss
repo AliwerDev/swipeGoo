@@ -43,6 +43,10 @@ header {
     height: 60px;
     cursor: pointer;
   }
+  #logocam{
+    height: 40px;
+    display: none;
+  }
 
   form {
     border-radius: 50px;
@@ -136,6 +140,7 @@ section {
       height: 100vh;
       margin: 0;
       padding: 0;
+      padding-bottom: 30px;
 
       li {
         padding: 5px 0 5px 30px !important;
@@ -417,5 +422,96 @@ section {
   background: white;
   border: solid white 10px;
   border-radius: 50%;
+}
+
+
+//responsive
+
+@media screen and (max-width: 1110px) and (min-width: 775.01px){
+  section{
+    main{
+      .gallery {
+        padding: 30px 40px 10px 40px;
+        column-count: 4;
+      }
+    }
+    aside{
+      top: 134px;
+    }
+
+  }
+}
+
+@media screen and (max-width: 775px) and (min-width: 490.01px) {
+  #logocam{
+    display: inline-block !important;
+  }
+  #logo{
+    display: none !important;
+  }
+  header{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 35px !important;
+    .logIn{
+      .logInBtn{
+        width:65px;
+
+        font-size:17px;
+        padding: 6px 11px;
+      }
+    }
+  }
+  section{
+    aside{
+      top: 70px !important;
+    }
+    main{
+      .gallery {
+        padding: 30px 30px 10px 30px;
+        column-count: 3;
+
+      }
+    }
+  }
+}
+@media screen and (max-width: 490px) and (min-width: 200px) {
+  header{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 25px !important;
+    form {
+      order: 3;
+      margin-top: 10px;
+      width: 100%;
+
+    }
+    .logIn{
+      .logInBtn{
+        width:65px;
+
+        font-size:16px;
+        padding: 6px 13px;
+      }
+    }
+  }
+  section{
+
+
+
+    aside{
+      width: 260px;
+      top: 134px;
+      &.hide{
+        left: -260px;
+      }
+    }
+    main{
+      .gallery {
+        padding: 30px 20px 10px 20px;
+        column-count:2;
+      }
+    }
+  }
 }
 //------------------------------------------------------------------------

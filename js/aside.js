@@ -30,7 +30,7 @@ const renderAside = (data) => {
 		const id = item[0];
 
 		const li = myCreateElement("li", {className: "d-flex align-items-center"}, menuUsers);
-		const minImg = myCreateElement("img", {className: "minImg", src: value.userImg || "http://cdn.onlinewebfonts.com/svg/img_264570.png", alt: value.userName}, li);
+		const minImg = myCreateElement("img", {className: "minImg", src: value.userImg || userDefaultImg, alt: value.userName}, li);
 		const p = myCreateElement("span", {innerText: value.userName}, li)
 		li.addEventListener('click', () => {
 			imgGallery.innerHTML = "";
