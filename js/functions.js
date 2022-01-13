@@ -26,6 +26,7 @@ const renderImgBox = (imagesData, user) => {
 	imgGallery.classList.remove("d-none")
 	apiGallery.classList.add("d-none");
 	readMore.classList.add("d-none")
+	brand.classList.add("d-none");
 
 	const imgDatas = Object.entries(imagesData);
 

@@ -1,27 +1,67 @@
-.loading {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
+body.dark {
+  transition: 0.5s;
+  color: white !important;
+  background-color: #2f3640;
+}
+body.dark header {
+  transition: 0.5s;
+  background-color: #353b48;
+}
+body.dark aside {
+  background-color: #171B20;
+}
+body.dark input {
+  background-color: #2F3640;
+  color: #f24f1ec0;
+}
+body.dark .load-more {
+  background-color: #f24f1ec0;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color: #111;
   display: flex;
-  justify-content: center;
+  border-radius: 50px;
   align-items: center;
-  z-index: 9999999;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
   background-color: white;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
 }
-.loading .loadingItem {
-  width: 200px;
-  height: 200px;
-  z-index: 1;
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
 }
-.loading .logoLoading {
-  width: 100px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
+
+.checkbox:checked + .label {
+  background-color: #F24E1E;
+}
+
+.fa-moon {
+  color: white;
+}
+
+.fa-sun {
+  color: white;
 }
 
 .bgHide {
@@ -34,6 +74,11 @@
   z-index: 50;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -44,6 +89,7 @@ body {
   max-width: 1550px;
   width: 100%;
   margin: 0 auto;
+  font-family: Montserrat, sans-serif;
 }
 
 header {
@@ -60,7 +106,8 @@ header {
 }
 header #logo {
   display: inline-block;
-  height: 40px;
+  height: 60px;
+  cursor: pointer;
 }
 header form {
   border-radius: 50px;
@@ -76,14 +123,19 @@ header form input {
   box-shadow: inset 0 -2px 10px rgba(0, 0, 0, 0.1);
   caret-color: orange;
 }
+header form input::placeholder {
+  color: silver;
+}
 header .logIn .logInBtn {
-  padding: 8px 20px;
-  border-radius: 5px;
-  background-color: #4A4E69;
+  padding: 8px 40px;
+  border-radius: 50px;
+  background-image: linear-gradient(262deg, #f68052 5%, #f16840 20%, #f24e1e 50%, #f16840 80%, #f68052 95%);
+  box-shadow: 0 2px 4px rgba(255, 122, 5, 0.5);
   color: white;
+  font-size: 18px;
+  font-weight: 700;
   border: none;
   outline: none;
-  font-size: 20px;
 }
 header .profile img {
   width: 45px;
@@ -130,18 +182,16 @@ section aside ul {
   overflow: auto;
   height: 100vh;
   margin: 0;
-  padding: 0 0 20px 0;
-}
-section aside ul::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  padding: 0;
 }
 section aside ul li {
+  padding: 5px 0 5px 30px !important;
   cursor: pointer;
   width: 100%;
   list-style-type: none !important;
   padding: 5px 0;
   font-size: 18px;
+  font-weight: 400;
   margin: 0;
 }
 section aside ul li .minImg {
@@ -158,8 +208,8 @@ section aside ul li span {
   margin-left: 20px;
 }
 section aside ul li:hover, section aside ul li.active {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  background-color: #cac3c3;
+  background-image: linear-gradient(262deg, #f68052 5%, #f16840 20%, #f24e1e 50%, #f16840 80%, #f68052 95%);
+  color: white;
 }
 section aside .aside-control {
   position: relative;
@@ -173,7 +223,12 @@ section aside .aside-control .arrowBtn {
   margin: 10px;
   z-index: 100;
   font-size: 20px;
-  background-color: #4A4E69;
+  padding: 20px;
+  background: rgba(210, 192, 189, 0.66);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12.3px);
+  -webkit-backdrop-filter: blur(12.3px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -191,7 +246,7 @@ section main {
   width: 100%;
 }
 section main .gallery {
-  column-count: 5;
+  column-count: 4;
   margin: 0 auto;
   padding: 30px 50px;
 }
@@ -248,7 +303,7 @@ section main .gallery .img-box span .download {
 }
 section main .gallery .img-box span .comment {
   left: 10px;
-  bottom: 10px;
+  bottom: 20px;
   width: 100px;
   height: 35px;
   font-size: 18px;
@@ -261,20 +316,20 @@ section main .gallery .img-box span .comment i {
 }
 section main .gallery .img-box span .cloud {
   right: 60px;
-  bottom: 10px;
+  bottom: 20px;
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background-color: #F2E9E4;
+  background-color: #f2e9e4;
   font-size: 20px;
 }
 section main .gallery .img-box span .nuqta {
   right: 10px;
-  bottom: 10px;
+  bottom: 20px;
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background-color: #F2E9E4;
+  background-color: #f2e9e4;
   font-size: 20px;
 }
 section main .gallery .add-img {
@@ -301,6 +356,79 @@ section main .gallery .add-img i {
     column-count: 2;
   }
 }
+.hello {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 111111111;
+  top: 0;
+  left: 0;
+}
+.hello img {
+  width: 250px;
+  height: auto;
+  position: absolute;
+  z-index: 123123123123123130000000;
+}
+
+.loader {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background-color: orangered;
+  animation: animate 1s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loader span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(#faf3ed, #ffb19a, #faa085);
+}
+
+.loader span:nth-child(1) {
+  filter: blur(5px);
+}
+
+.loader span:nth-child(2) {
+  filter: blur(10px);
+}
+
+.loader span:nth-child(3) {
+  filter: blur(25px);
+}
+
+.loader span:nth-child(4) {
+  filter: blur(50px);
+}
+
+.loader:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: white;
+  border: solid white 10px;
+  border-radius: 50%;
+}
+
 .bgHideOut {
   width: 100%;
   height: 100vh;
@@ -374,7 +502,7 @@ section main .gallery .add-img i {
   outline: none;
 }
 #userProfileModal .info .userName {
-  color: #4A4E69;
+  color: linear-gradient(262deg, #f68052 5%, #f16840 20%, #f24e1e 50%, #f16840 80%, #f68052 95%);
   font-weight: bold;
 }
 #userProfileModal .info div {
@@ -407,14 +535,6 @@ section main .gallery .add-img i {
   background-color: #fff200;
 }
 
-body .search-form ion-icon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 0.5;
-  color: gray;
-  font-size: 20px;
-}
 body .gallery .item {
   width: 100%;
   height: auto;
@@ -452,11 +572,14 @@ body .gallery .item a img {
   object-fit: cover;
 }
 body .load-more {
-  width: 200px;
+  text-align: center;
+  width: 250px;
   padding: 10px 50px;
-  background-color: #000;
+  background-image: linear-gradient(262deg, #f68052 5%, #f16840 20%, #f24e1e 50%, #f16840 80%, #f68052 95%);
+  border-radius: 50px;
   color: #fff;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: 500;
   margin: 30px auto;
   display: block;
   text-decoration: none;
@@ -467,7 +590,8 @@ body .load-more {
 
 @media only screen and (min-width: 900px) {
   body form input {
-    font-size: 24px;
+    font-size: 18px;
+    font-weight: 500;
   }
   body form ion-icon {
     font-size: 24px;
@@ -488,7 +612,8 @@ body .load-more {
   top: 0;
   left: 0;
   z-index: 99999;
-  background: #F2E9E4;
+  background: rgba(0, 0, 0, 0.4) url("https://wallpaperaccess.com/full/158867.jpg");
+  background-size: cover;
 }
 #signInModal button {
   border: none;
@@ -498,18 +623,29 @@ body .load-more {
 #signInModal .saveBtn {
   display: block;
   margin: 10px auto;
-  background: #4A4E69;
+  background: linear-gradient(262deg, #f68052 5%, #f16840 20%, #f24e1e 50%, #f16840 80%, #f68052 95%);
   color: #fff;
   padding: 8px 16px;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 24px;
+  font-weight: 600;
+  box-shadow: 0 2px 3px #f24e1e;
 }
 #signInModal form {
   width: 90%;
   max-width: 600px;
-  padding: 20px;
+  padding: 100px 20px;
   border-radius: 15px;
   box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* From https://css.glass */
+  background: rgba(187, 155, 150, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.2px);
+  -webkit-backdrop-filter: blur(5.2px);
 }
 #signInModal form .form-header {
   width: 100%;
@@ -522,24 +658,40 @@ body .load-more {
   padding: 10px 20px;
   border-radius: 10px;
   font-size: 24px;
-  font-weight: bold;
-  background: #F2E9E4;
+  font-weight: 600;
+  background: transparent;
 }
 #signInModal form .form-header .logBtn.active {
-  background-color: #909090;
+  background: linear-gradient(262deg, #f68052 5%, #f16840 20%, #f24e1e 50%, #f16840 80%, #f68052 95%);
   color: #fff;
+  box-shadow: 0 2px 3px #f24e1e;
 }
 #signInModal form h1 {
   margin: 20px auto;
 }
 #signInModal form input {
-  width: 100%;
+  width: 80%;
   background: none;
   outline: none;
   padding: 8px 16px;
-  border-radius: 5px;
+  border-radius: 20px;
   margin-bottom: 15px;
-  border: 1px solid #4A4E69;
+  border: none;
+  border-bottom: 2px solid #f24e1e;
+}
+#signInModal form input:focus {
+  border: 2px solid #f24e1e;
+  border-radius: 50px;
+}
+#signInModal form input::autofill {
+  background-color: white !important;
+}
+
+#about .line {
+  height: 3px;
+  width: 100%;
+  background: #000;
+  opacity: 0.6;
 }
 
 /*# sourceMappingURL=main.css.map */

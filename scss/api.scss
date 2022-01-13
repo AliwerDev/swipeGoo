@@ -1,14 +1,4 @@
 body {
-  .search-form {
-    ion-icon {
-      position: absolute;
-      top: 0;
-      right: 0;
-      opacity: .5;
-      color: gray;
-      font-size: 20px;
-    }
-  }
   .gallery {
     .item {
       width: 100%;
@@ -17,11 +7,11 @@ body {
       overflow: hidden;
       border-radius: 16px;
       margin-bottom: 20px;
-      transition: .3s ease box-shadow;
+      transition: 0.3s ease box-shadow;
 
       &:hover {
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-        img{
+        img {
           filter: blur(2px);
         }
       }
@@ -34,7 +24,7 @@ body {
         text-align: center;
         font-weight: bold;
         color: aliceblue;
-        transition: .5s ease-in-out all;
+        transition: 0.5s ease-in-out all;
         font-size: 20px;
         margin: 0;
         opacity: 0;
@@ -53,37 +43,36 @@ body {
       }
     }
   }
-  .load-more{
-    width: 200px;
-    padding:10px 50px;
-    background-color: #000;
+  .load-more {
+    text-align: center;
+    width: 250px;
+    padding: 10px 50px;
+    background-image: $color-primary-btn;
+    border-radius: $border-radius;
     color: #fff;
-    font-size: 15px;
+    font-size: $button-fs;
+    font-weight: 500;
     margin: 30px auto;
     display: block;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 500;
     cursor: pointer;
-
   }
-
 }
 @media only screen and (min-width: 900px) {
-  body{
+  body {
     form {
       input {
+        font-size: $button-fs;
+        font-weight: 500;
+      }
+      ion-icon {
         font-size: 24px;
       }
-      ion-icon{
-        font-size:24px;
-      }
     }
-    .gallery{
+    .gallery {
       grid-gap: 30px;
-
     }
   }
-
-
 }

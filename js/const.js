@@ -7,3 +7,5 @@ const logInBox = document.querySelector("#logInBox");
 let userUid = "notUser";
 let count;
 let readMore = document.querySelector(".load-more")
+const loading = document.querySelector(".hello");
+const brand = document.querySelector(".brand-part");

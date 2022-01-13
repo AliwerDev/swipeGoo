@@ -21,17 +21,32 @@
 
 <body>
  <!--Loading-->
-<div class="loading d-none">
-    <img class="loadingItem" src="https://trulience.com/home/assets/img/loading_graphic.gif" alt="loading SwipeGo">
-    <img src="./images/swipego-logo.png" class="logoLoading" alt="">
-</div>
+ <!-- loading animation -->
+ <div class="hello">
+     <img src="./images/loading-logo.svg" alt="">
+     <div class="loader">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+     </div>
+ </div>
 
 <!-- Header qismi -->
-<header class="px-5 py-4">
-    <img class="rounded" id="logo" src="./images/swipego-logo.png" alt="swipego-logo">
+<header class="shadow px-5 py-4">
+    <img class="rounded" id="logo" src="./images/swipegoLogo.svg" alt="swipego-logo">
     <form class="search-form  mx-5">
         <input type="text" placeholder="Search..." class="">
     </form>
+    <div class="me-2">
+        <input type="checkbox" class="checkbox" id="checkbox">
+        <label for="checkbox" class="label">
+            <i class="far fa-sun"></i>
+            <i class="fas fa-moon"></i>
+            <!-- <i class='fas fa-sun'></i> -->
+            <div class='ball'> </div>
+        </label>
+    </div>
     <div class="logIn" id="logInBox">
         <button class="logInBtn">Log In</button>
     </div>
@@ -63,6 +78,26 @@
     </aside>
 
     <main class="">
+
+        <section>
+            <div class="container brand-part">
+                <div class="row">
+                    <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+                        <h1 class="display-5 fw-bold text-uppercase">
+                            Swipe, <span style="color:#f24e1e"> get </span> more ideas and <span style="color:#f24e1e"> save </span> memories with us
+                        </h1>
+                        <p style="font-size: 20px; font-weight: 300; margin-top: 20px;">
+                            Click once - save. Swipe more - see the masterpieces...
+                        </p>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <img class="img-fluid" src="./images/65678-photo-book-animation.gif" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <div class="gallery" id="usersGallery"></div>
         <div class="gallery" id="apiGallery"></div>
         <a class="load-more " data-img="curated">Load More</a>
@@ -75,6 +110,7 @@
         crossorigin="anonymous"></script>
 
 <!--Consts-->
+ <script src="js/darkMod.js"></script>
 <script src="./js/firebase.js" type="module"></script>
 <script src="js/profile.js" type="module"></script>
 <script src="js/const.js"></script>

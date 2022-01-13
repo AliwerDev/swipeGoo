@@ -15,6 +15,8 @@ class PhotoGallery{
         });
         this.searchForm.addEventListener('submit', (e)=>{
             this.pageIndex = 1;
+            readMore.classList.remove("d-none")
+            brand.classList.add("d-none");
             this.getSearchedImages(e);
         });
         // if(imgGallery.scrollTop === imgGallery.clientHeight){
@@ -26,7 +28,8 @@ class PhotoGallery{
         this.logo.addEventListener('click',
             () => {
                 this.pageIndex = 1;
-
+                brand.classList.remove("d-none");
+                readMore.classList.remove("d-none")
                 this.galleryDIv.innerHTML = '';
                 imgGallery.classList.add("d-none")
                 apiGallery.classList.remove("d-none")

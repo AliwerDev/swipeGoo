@@ -47,6 +47,8 @@ const renderAside = (data) => {
 			}
 		})
 	})
+
+	loading.classList.add("d-none");
 }
 
 getUsers(renderAside);
