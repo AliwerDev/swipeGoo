@@ -4,15 +4,22 @@ import {myCreateElement, renderImgBox} from "./functions.js";
 const arrowBtn = document.querySelector(".arrowBtn");
 const aside = document.querySelector("#aside");
 const menuUsers = document.querySelector("#menuUsers");
+const bgHide = document.querySelector(".bgHide")
+let lastActiveLi = myCreateElement("span", {className: "d-none"}, aside);
 
 const header = document.querySelector("header");
-console.log(header.offsetHeight);
 aside.style.top = header.offsetHeight + "px";
 
 arrowBtn.addEventListener('click', () => {
-	aside.classList.toggle("hide");
-	document.querySelector(".bgHide").classList.toggle("d-none")
+	if(aside.classList.contains("hide")){
+		aside.classList.remove("hide");
+		bgHide.classList.remove("d-none")
+	}else{
+		aside.classList.add("hide");
+		bgHide.classList.add("d-none")
+	}
 })
+
 
 const renderAside = (data) => {
 	const dataUsers = Object.entries(data);
@@ -27,7 +34,17 @@ const renderAside = (data) => {
 		const p = myCreateElement("span", {innerText: value.userName}, li)
 		li.addEventListener('click', () => {
 			imgGallery.innerHTML = "";
+			lastActiveLi.classList.remove("active");
+			li.classList.add("active");
+			lastActiveLi = li;
 			getUserImages(id, renderImgBox);
+
+			if(!bgHide.classList.contains("d-none")){
+				bgHide.classList.add("d-none")
+			}
+			if(!aside.classList.contains("hide")){
+				aside.classList.add("hide")
+			}
 		})
 	})
 }

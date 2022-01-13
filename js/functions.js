@@ -1,5 +1,4 @@
 //creat element
-import {creatAddUser} from "./user.js";
 import {getLikes, pushLike, removeLike} from "./firebase.js";
 
 const myCreateElement = (elementName, attrs = {}, father) => {
@@ -23,15 +22,10 @@ const getDate = () => {
 }
 
 const renderImgBox = (imagesData, user) => {
-	console.log(imagesData)
 	imgGallery.innerHTML = "";
 	imgGallery.classList.remove("d-none")
 	apiGallery.classList.add("d-none");
 	readMore.classList.add("d-none")
-
-	if(user) {
-		creatAddUser(imgGallery);
-	}
 
 	const imgDatas = Object.entries(imagesData);
 
@@ -60,7 +54,6 @@ const renderImgBox = (imagesData, user) => {
 				likeBtn.classList.add("text-danger")
 				likeBtn.classList.remove("text-white");
 			}
-			console.log(counter)
 			likeCounter.innerHTML = counter;
 		}
 

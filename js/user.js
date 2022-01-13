@@ -3,7 +3,11 @@ import {readUrl, uploadProcess} from "./firebase.js";
 
 function creatAddUser(father) {
 	const imgBox = myCreateElement("div", {className: "add-img img-box"}, father);
-	const input = myCreateElement("input", {type: "file", className: "d-none"}, imgBox);
+	const input = myCreateElement("input", {
+		type: "file",
+		className: "d-none",
+		accept: ".png, .jpg, .jpeg .svg .gif",
+	}, imgBox);
 	const progress = myCreateElement("div", {className: "d-none w-100 progress mx-2 mb-4 w-100"}, imgBox);
 	const img = myCreateElement("img", {className: "d-none"});
 	const progressbar = myCreateElement("div", {

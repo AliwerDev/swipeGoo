@@ -3,6 +3,17 @@ $color-bg: #F2E9E4;
 $text-color-primary: #22223B;
 $text-color-secondary: #9A8C98;
 $test-color: white;
+$dark-1: #0E1621;
+$dark-2: #17212B;
+$dark-3: #242F3D;
+$dark-32: #3d495f;
+$dark-4: #768C9E;
+$blue: #3498db;
+$light: #fff;
+
+body{
+  font-family: 'Montserrat', sans-serif;
+}
 
 .loading{
   width: 100%;
@@ -165,7 +176,7 @@ section{
         padding: 5px 0;
         font-size: 18px;
         margin: 0;
-        &:hover {
+        &:hover, &.active {
           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
           background-color: rgb(202, 195, 195);
         }

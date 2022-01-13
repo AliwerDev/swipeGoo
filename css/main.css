@@ -157,7 +157,7 @@ section aside ul li .minImg {
 section aside ul li span {
   margin-left: 20px;
 }
-section aside ul li:hover {
+section aside ul li:hover, section aside ul li.active {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background-color: #cac3c3;
 }

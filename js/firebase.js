@@ -5,6 +5,7 @@ import {get, getDatabase, onValue, ref, set, push, remove} from "https://www.gst
 
 import {
 	createUserWithEmailAndPassword,
+	onAuthStateChanged,
 	getAuth,
 	signInWithEmailAndPassword,
 	signOut,
@@ -170,6 +171,22 @@ function signIn(dataUser) {
 			alert("parol yoki email xato");
 		});
 }
+const isSignIn = (callback = () => {}) => {
+	console.log("sign in boshlandi")
+	onAuthStateChanged(auth, (user) => {
+		if (user) {
+			const uid = user.uid;
+			console.log("sign in bulgan")
+			callback(uid);
+		} else {
+			console.warn("no sign in");
+		}
+	});
+};
+isSignIn((uid) => {
+	isHaveUser(uid);
+	userUid = uid;
+});
 
 // function getUserImages(id, callback) {
 // 	onValue(ref(db, `users/${id}/images/`), (data) => {
@@ -199,12 +216,16 @@ function getUsers (callback) {
 }
 
 
-function signOutUser (email, password) {
-	signOut(auth, email, password)
-		.then((cred) => {
-			console.log('foydalanuvchi tark etdi');
-			if (cred) console.log(cred.user);
+function signOutUser (callback = () => {}) {
+	signOut(auth)
+		.then(() => {
+			callback(true);
+			console.log("user Chiqib ketti")
 		})
+		.catch((error) => {
+			callback(false);
+			console.log("user chiqib keta olmadi")
+		});
 }
 
 function getLikes (uid, id, callback){
@@ -228,7 +249,7 @@ function removeLike(uid, id, likeId){
 		.catch(err => console.log(err));
 }
 
-export { createUser, signIn, getUsers, getUserImages, getUserData, uploadProcess, readUrl, getLikes, pushLike, removeLike}
+export {signOutUser, createUser, signIn, getUsers, getUserImages, getUserData, uploadProcess, readUrl, getLikes, pushLike, removeLike}
 
 
 
