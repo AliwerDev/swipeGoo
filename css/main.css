@@ -204,12 +204,28 @@ section aside.hide li .minImg {
 section aside.hide li span {
   order: 1;
 }
-section aside ul {
+section aside #menuUsers {
   overflow: auto;
   height: 100vh;
+  padding-bottom: 30px;
+}
+section aside #menuUsers .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+section aside #menuUsers .header span {
+  font-size: 18px;
+}
+section aside #menuUsers .header span:nth-child(2) {
+  color: #00a8ff;
+  font-weight: bold;
+  font-size: 24px;
+}
+section aside ul {
   margin: 0;
   padding: 0;
-  padding-bottom: 30px;
 }
 section aside ul li {
   padding: 5px 0 5px 30px !important;

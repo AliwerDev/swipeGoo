@@ -254,9 +254,9 @@ function getUserData(id, callback){
 		callback(data.val() || {});
 	})
 }
-function getUserData2(id, callback){
+function getUserData2(id, callback, father){
 	get(ref(db, `users/${id}`))
-		.then((ref) => callback(ref.val()))
+		.then((ref) => callback(ref.val(), father))
 		.catch(err => console.log(err))
 }
 

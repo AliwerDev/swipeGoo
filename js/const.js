@@ -14,3 +14,6 @@ const loading = document.querySelector(".hello");
 const brand = document.querySelector(".brand-part");
 const addImgModal = document.querySelector(".addImgModal");
 const userAccount = document.querySelector('#userAccount');
+
+
+const menuUsers = document.querySelector("#menuUsers");

@@ -17,6 +17,7 @@ function renderProfile(data) {
     logInBox.classList.add("d-none");
     userProfileModal.innerHTML = "";
 
+    menuUsers.innerHTML = "";
     followingArr(data.following || {})
     followersArr(data.followers || {})
 

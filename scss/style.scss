@@ -147,17 +147,31 @@ section {
       }
     }
 
-    ul {
+    #menuUsers{
       overflow: auto;
-
       height: 100vh;
-      margin: 0;
-      padding: 0;
       padding-bottom: 30px;
 
+      .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        span{
+          font-size: 18px;
+          &:nth-child(2){
+            color: #00a8ff;
+            font-weight: bold;
+            font-size: 24px;
+          }
+        }
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0;
       li {
         padding: 5px 0 5px 30px !important;
-
         .minImg {
           margin: 5px 10px;
           width: 30px;

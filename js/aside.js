@@ -20,8 +20,9 @@ arrowBtn.addEventListener('click', () => {
 	}
 })
 
-const renderAside = (value) => {
-	const li = myCreateElement("li", {className: "d-flex align-items-center"}, menuUsers);
+const renderAside = (value, father) => {
+	console.log(father)
+	const li = myCreateElement("li", {className: "d-flex align-items-center"}, father);
 	const minImg = myCreateElement("img", {className: "minImg", src: value.userImg || userDefaultImg, alt: value.userName}, li);
 	const p = myCreateElement("span", {innerText: value.userName}, li)
 	li.addEventListener('click', () => {
@@ -41,26 +42,34 @@ const renderAside = (value) => {
 
 //Render follows
 function followingArr(data) {
-	menuUsers.innerHTML = "";
-	const title = myCreateElement("h3", {className: "ps-3", innerHTML: "Following"}, menuUsers);
 	const dataArr = Object.entries(data);
+
+	const title = myCreateElement("div", {className: "ps-3 header",}, menuUsers);
+	myCreateElement("span", {className: "title", innerHTML: "Following"}, title)
+	myCreateElement("span", {className: "counterFollowing", innerHTML: dataArr.length}, title)
+	const followingUl = myCreateElement("ul", {className: "followingUl"}, menuUsers);
 	aside.classList.remove("d-none")
-	if(dataArr.length === 0){
-		aside.classList.add("d-none")
-	}
+	// if(dataArr.length === 0){
+	// 	aside.classList.add("d-none")
+	// }
 
 	dataArr.map(item => {
 		const uid = item[0];
-		getUserData2(uid, renderAside)
+		getUserData2(uid, renderAside, followingUl)
 	})
 }
 function followersArr(data) {
-	const title2 = myCreateElement("h3", {className: "ps-3", innerHTML: "Followers"}, menuUsers);
 	const dataArr = Object.entries(data);
+
+	const title = myCreateElement("div", {className: "ps-3 header",}, menuUsers);
+	myCreateElement("span", {className: "title", innerHTML: "Followers"}, title)
+	myCreateElement("span", {className: "counterFollowing", innerHTML: dataArr.length}, title)
+
+	const followersUl = myCreateElement("ul", {className: "followersUl"}, menuUsers);
 
 	dataArr.map(item => {
 		const uid = item[0];
-		getUserData2(uid, renderAside)
+		getUserData2(uid, renderAside, followersUl)
 	})
 
 	loading.classList.add("d-none");
