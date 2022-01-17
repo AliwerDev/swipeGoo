@@ -1143,8 +1143,8 @@ body .load-more {
   cursor: pointer;
 }
 @media screen and (max-width: 768px) {
-  .addImgModal .addImgModal {
-    padding: 20px 30px;
+  .addImgModal {
+    padding: 10px !important;
   }
   .addImgModal .row {
     align-items: flex-start;
