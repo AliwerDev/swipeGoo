@@ -19,14 +19,14 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js";
 
 const firebaseConfig = {
-	apiKey: "AIzaSyBODtPdwQqurj89ErjwkcaEkVc2wVkTt-I",
-	authDomain: "swipe-a8e56.firebaseapp.com",
-	databaseURL: "https://swipe-a8e56-default-rtdb.asia-southeast1.firebasedatabase.app",
-	projectId: "swipe-a8e56",
-	storageBucket: "swipe-a8e56.appspot.com",
-	messagingSenderId: "498897302123",
-	appId: "1:498897302123:web:8e1451a9290fcaf415f72e",
-	measurementId: "G-QPZR5BR575"
+	apiKey: "AIzaSyD823vt6VHbV95OwrgyGwSTTDbn-AaTwKU",
+	authDomain: "swie-35538.firebaseapp.com",
+	databaseURL: "https://swie-35538-default-rtdb.europe-west1.firebasedatabase.app",
+	projectId: "swie-35538",
+	storageBucket: "swie-35538.appspot.com",
+	messagingSenderId: "18506271841",
+	appId: "1:18506271841:web:1731a6858051d8e8efae20",
+	measurementId: "G-00NJ37Q70K"
 };
 
 // Initialize Firebase
@@ -175,8 +175,8 @@ function updateProfile(uid, data) {
 		.catch(err => console.log(err));
 }
 
-function createUser (userData) {
-	createUserWithEmailAndPassword(auth, userData.email, userData.password)
+function createUser (userData, password) {
+	createUserWithEmailAndPassword(auth, userData.email, password)
 		.then((cred) => {
 			const userData2 = userData;
 			userData2.uid = cred.user.uid;

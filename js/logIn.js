@@ -53,7 +53,7 @@ function creatSignUpForm (father) {
 			fullName: fullName.value,
 			userName: userName.value,
 		}
-		createUser(userData);
+		createUser(userData, password.value);
 	})
 }
 
