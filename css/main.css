@@ -861,6 +861,8 @@ body .load-more {
 #chat .row .left div .img-responsive {
   width: 60px;
   height: 60px;
+  object-fit: cover;
+  cursor: pointer;
   border-radius: 50%;
   border: 2px solid rgba(0, 0, 0, 0.425);
 }
@@ -942,6 +944,11 @@ body .load-more {
   align-items: center;
   justify-content: center;
   box-shadow: none !important;
+}
+@media screen and (max-width: 768px) {
+  #chat .row .right {
+    padding-bottom: 30px;
+  }
 }
 
 #signInModal {

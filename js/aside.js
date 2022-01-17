@@ -21,7 +21,6 @@ arrowBtn.addEventListener('click', () => {
 })
 
 const renderAside = (value, father) => {
-	console.log(father)
 	const li = myCreateElement("li", {className: "d-flex align-items-center"}, father);
 	const minImg = myCreateElement("img", {className: "minImg", src: value.userImg || userDefaultImg, alt: value.userName}, li);
 	const p = myCreateElement("span", {innerText: value.userName}, li)

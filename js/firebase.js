@@ -308,8 +308,7 @@ function getComments(ownerId, id, callback, owner){
 
 function pushComment(ownerId, id, message) {
 	push(ref(db, `users/${ownerId}/images/${id}/comments/`), message)
-		.then((ref) => {
-			console.log(ref)
+		.then(() => {
 		})
 		.catch(err => console.log(err));
 }

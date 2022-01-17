@@ -80,11 +80,7 @@ function renderProfile(data) {
         innerHTML: `<i class="fas fa-camera"></i>`
     }, avatar);
 
-    const saveUserImg = myCreateElement("button", {
-        className: "btn d-none",
-        innerHTML: `<i class="fas fa-check"></i>`
-    }, avatar);
-    const input = myCreateElement("input", {type: "file", className: "d-none"}, avatar);
+    const input = myCreateElement("input", {type: "file", accept: ".png, .jpg, .jpeg .svg .gif", className: "d-none"}, avatar);
 
     const progress = myCreateElement("div", {
         style: "height: .5rem !important",
@@ -130,16 +126,11 @@ function renderProfile(data) {
 
     changeUserImg.addEventListener('click', () => {
         input.click();
-        saveUserImg.classList.remove("d-none");
-        changeUserImg.classList.add("d-none");
     })
     input.addEventListener("change", (e) => {
         readUrl(e.target.files);
-    });
-    saveUserImg.addEventListener('click', () => {
         progress.classList.remove("d-none")
         uploadProcess(userImg, progress, "user");
-        saveUserImg.classList.add("d-none");
         changeUserImg.classList.remove("d-none")
     });
 

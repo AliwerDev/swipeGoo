@@ -71,6 +71,8 @@ const renderBigImg = (comments, owner) => {
 	const input = myCreateElement("input", {className: "form-control py-2", placeholder: "Commentary..."}, form);
 	const send = myCreateElement("button", {className: "mx-2 btn", type: "submit", innerHTML: `<i class="fab fa-telegram"></i>`}, form);
 
+	input.focus();
+	chatBody.scrollTop = chatBody.scrollHeight;
 	let messageObj = {};
 	function createObj(data) {
 		messageObj = {
@@ -91,7 +93,7 @@ const renderBigImg = (comments, owner) => {
 		send.addEventListener('click', (e) => {
 			e.preventDefault();
 			getUserData(userUid, createObj);
-
+			input.focus();
 			pushComment(owner.ownerId, owner.imgId, messageObj);
 		})
 	}

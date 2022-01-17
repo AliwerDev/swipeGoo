@@ -98,6 +98,8 @@
                 .img-responsive {
                     width: 60px;
                     height: 60px;
+                    object-fit: cover;
+                    cursor: pointer;
                     border-radius: 50%;
                     border: 2px solid rgba(0, 0, 0, 0.425);
                 }
@@ -170,7 +172,6 @@
                         font-size: 18px;
                     }
 
-
                     .userName {
 
                         font-size: 15px;
@@ -191,7 +192,6 @@
                     background-color: white;
                     border: none;
                     margin-right: 20px;
-
                 }
 
                 button {
@@ -203,6 +203,11 @@
                     align-items: center;
                     justify-content: center;
                     box-shadow: none !important;
+                }
+            }
+            @media screen and (max-width: 768px) {
+                &{
+                    padding-bottom: 30px;
                 }
             }
 
