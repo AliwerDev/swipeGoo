@@ -31,7 +31,7 @@ const renderBigImg = (comments, owner) => {
 	                <p class="paragraph">${owner.imgInfo || ""}</p>
 				</div>
 	`}, col1);
-	const user = myCreateElement("div", {className: "d-flex my-2 mx-4 align-items-center userProfil gap-3"}, col1);
+	const user = myCreateElement("div", {className: "d-flex align-items-center userProfil gap-3"}, col1);
 
 	const img = myCreateElement("img", {className: "img-responsive", alt: owner.userName, src: owner.userImg || userDefaultImg}, user );
 	myCreateElement("div", {className: "", innerHTML: `

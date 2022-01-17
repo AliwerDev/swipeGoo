@@ -10,6 +10,10 @@ let lastActiveLi = myCreateElement("span", {className: "d-none"}, aside);
 const header = document.querySelector("header");
 aside.style.top = header.offsetHeight + "px";
 
+bgHide.addEventListener('click', () => {
+
+})
+
 arrowBtn.addEventListener('click', () => {
 	if(aside.classList.contains("hide")){
 		aside.classList.remove("hide");

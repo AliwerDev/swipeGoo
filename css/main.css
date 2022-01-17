@@ -852,11 +852,13 @@ body .load-more {
   font-weight: 700;
 }
 #chat .row .left .userProfil {
-  margin: 20px 0px;
+  padding: 10px 20px;
   object-fit: cover;
+  background: #fff;
 }
 #chat .row .left .userProfil div p {
   margin: 0;
+  color: #000;
 }
 #chat .row .left div .img-responsive {
   width: 60px;
@@ -947,7 +949,7 @@ body .load-more {
 }
 @media screen and (max-width: 768px) {
   #chat .row .right {
-    padding-bottom: 30px;
+    padding-bottom: 60px;
   }
 }
 

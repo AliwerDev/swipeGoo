@@ -84,12 +84,14 @@
             }
 
             .userProfil {
-                margin: 20px 0px;
+                padding: 10px 20px;
                 object-fit: cover;
+                background: #fff;
 
                 div {
                     p {
                         margin: 0;
+                        color: #000;
                     }
                 }
             }
@@ -207,7 +209,7 @@
             }
             @media screen and (max-width: 768px) {
                 &{
-                    padding-bottom: 30px;
+                    padding-bottom: 60px;
                 }
             }
 

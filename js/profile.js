@@ -138,6 +138,10 @@ function renderProfile(data) {
         userProfileModal.classList.add("hideProfile");
         bgHideOut.classList.add("d-none");
     });
+    bgHideOut.addEventListener('click', () => {
+        userProfileModal.classList.add("hideProfile");
+        bgHideOut.classList.add("d-none");
+    })
 
     //My gallery
     const myGalleryBox = myCreateElement("div", {className: "myGalleryBox py-2"}, userProfileModal)
