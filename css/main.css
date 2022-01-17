@@ -1144,10 +1144,12 @@ body .load-more {
 }
 @media screen and (max-width: 768px) {
   .addImgModal {
-    padding: 10px !important;
+    padding: 0 !important;
+    border-radius: 0;
   }
   .addImgModal .row {
     align-items: flex-start;
+    height: 100%;
   }
   .addImgModal .row .col-md-6 .infoBox {
     justify-content: flex-start;
