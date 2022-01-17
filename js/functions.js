@@ -76,7 +76,7 @@ const renderImgBox = (imagesData, isAll = false) => {
 	}
 	imgDataArr.map(imgData => {
 		const imgBox = myCreateElement("div", {className: "img-box",}, gallery);
-		const img = myCreateElement("img", {id: imgData.id, src: imgData.url, alt: imgData.title ||  imgData.ownerId}, imgBox)
+		const img = myCreateElement("img", {className: "imgBoxImg",id: imgData.id, src: imgData.url, alt: imgData.title ||  imgData.ownerId}, imgBox)
 		const span = myCreateElement("span", {}, imgBox);
 
 		let editeBtn;
@@ -156,8 +156,7 @@ const renderImgBox = (imagesData, isAll = false) => {
 			})
 		}
 		else{
-			deleteBtn.innerHTML = "";
-			const img = myCreateElement("img", {className: "userMinImg", src: userDefaultImg}, deleteBtn);
+			deleteBtn.innerHTML = `<i class="far fa-user"></i>`;
 			deleteBtn.addEventListener('click', () => {
 				otherUserProfile(imgData.ownerId)
 			})

@@ -29,7 +29,7 @@ body.dark #userProfileModal button .fa-camera,
 body.dark #userProfileModal button .fa-check {
   color: white;
 }
-body.dark input {
+body.dark input, body.dark textarea {
   background-color: #2F3640;
   color: #fc5a29;
 }
@@ -312,7 +312,7 @@ section main .gallery .img-box:hover span {
 section main .gallery .img-box:hover img {
   filter: blur(2px);
 }
-section main .gallery .img-box img {
+section main .gallery .img-box .imgBoxImg {
   width: 100%;
   min-height: 150px;
   object-fit: cover;
