@@ -1,6 +1,7 @@
-import { getUserData, uploadProcess, readUrl, signOutUser, getUserImages } from "./firebase.js";
-import { myCreateElement, renderImgBox } from "./functions.js";
-import {creatAddUser} from "./user.js";
+import {getUserData, uploadProcess, readUrl, signOutUser, getUserImages, updateProfile} from "./firebase.js";
+import {myCreateElement, openProfileGallery, otherUserProfile, renderImgBox} from "./functions.js";
+import {creatAddImg} from "./user.js";
+import { followingArr, followersArr } from "./aside.js"
 
 let reader = new FileReader();
 
@@ -15,6 +16,9 @@ function renderProfile(data) {
     openProfile.classList.remove("d-none");
     logInBox.classList.add("d-none");
     userProfileModal.innerHTML = "";
+
+    followingArr(data.following || {})
+    followersArr(data.followers || {})
 
     const profileHeader = myCreateElement("div", {classList: "d-flex align-items-center justify-content-between"}, userProfileModal);
     const backBtn = myCreateElement("button", {
@@ -49,9 +53,14 @@ function renderProfile(data) {
     }, myCreateElement("li", {}, ulMenu));
 
     myGallery.addEventListener('click', () => {
-        imgGallery.innerHTML = "";
-        getUserImages(userUid, renderImgBox);
-    })
+        openProfileGallery();
+        otherUserProfile(userUid)
+    });
+
+    const editProfileBtn = myCreateElement("button", {
+        className: "dropdown-item",
+        innerHTML: `<i class="fas fa-user-edit"></i> Edit Profile`,
+    }, myCreateElement("li", {}, ulMenu))
 
     const signOutBtn = myCreateElement("button", {
         className: "dropdown-item",
@@ -73,10 +82,12 @@ function renderProfile(data) {
         src: data.userImg || userDefaultImg,
         alt: data.userName
     }, avatar);
+
     const changeUserImg = myCreateElement("button", {
         className: "btn",
         innerHTML: `<i class="fas fa-camera"></i>`
     }, avatar);
+
     const saveUserImg = myCreateElement("button", {
         className: "btn d-none",
         innerHTML: `<i class="fas fa-check"></i>`
@@ -94,10 +105,36 @@ function renderProfile(data) {
     }, progress);
 
     const infoForm = myCreateElement("form", {className: "info",}, userProfileModal);
-    const fullName = myCreateElement("input", {id: "fullName", readOnly: true, value: data.fullName || ""}, infoForm);
-    const userName = myCreateElement("input", {id: "userName", readOnly: true, value: data.userName}, infoForm);
+    const fullName = myCreateElement("input", {id: "fullName",placeholder: "Full name", className: "w-100", readOnly: true, value: data.fullName || "Full Name"}, infoForm);
+    const userName = myCreateElement("input", {id: "userName",placeholder: "User name", required: true, className: "w-100", readOnly: true, value: data.userName}, infoForm);
+    const userBio = myCreateElement("input", {id: "userBio",placeholder: "Bio", required: true, className: "w-100", readOnly: true, value: data.userBio || "Bio"}, infoForm);
 
-    creatAddUser(userProfileModal)
+    //Edit Profile
+    editProfileBtn.addEventListener('click', () => {
+        fullName.readOnly = false;
+        fullName.focus();
+        userName.readOnly = false;
+        userBio.readOnly = false;
+
+        const saveBtn = myCreateElement("button", {className: "updateProfile btn btn-primary", innerHTML: `<i class="fas fa-check"></i>`}, infoForm);
+
+        saveBtn.addEventListener('click', () => {
+            fullName.readOnly = true;
+            userName.readOnly = true;
+            userBio.readOnly = true;
+
+            const data = {
+                fullName: fullName.value,
+                userName: userName.value,
+                userBio: userBio.value,
+            }
+
+            updateProfile(userUid, data);
+            saveBtn.remove();
+        })
+    })
+
+    const addNewImg = myCreateElement("div", )
 
     changeUserImg.addEventListener('click', () => {
         input.click();
@@ -112,13 +149,23 @@ function renderProfile(data) {
         uploadProcess(userImg, progress, "user");
         saveUserImg.classList.add("d-none");
         changeUserImg.classList.remove("d-none")
-    })
-
+    });
 
     backBtn.addEventListener('click', () => {
         userProfileModal.classList.add("hideProfile");
         bgHideOut.classList.add("d-none");
-    })
+    });
+
+
+    //Add Img
+    const addImgBox = myCreateElement("div", {className: "addPhotoBox"}, userProfileModal )
+    const addImgBtn = myCreateElement("button", {className: "addImgButton", innerHTML: `<i class="fas fa-plus"></i> Add Img To Gallery`}, addImgBox);
+
+    addImgBtn.addEventListener('click', () => {
+        userProfileModal.classList.add("hideProfile");
+        bgHideOut.classList.add("d-none");
+        creatAddImg();
+    });
 }
 
 openProfile.addEventListener('click', e => {

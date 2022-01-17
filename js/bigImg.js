@@ -1,31 +1,51 @@
-import { myCreateElement } from "./functions.js";
+import {myCreateElement, otherUserProfile} from "./functions.js";
 import {getUserData, pushComment} from "./firebase.js";
-
+let bigImgSection;
 const renderBigImg = (comments, owner) => {
+	if(!bigImgSection) bigImgSection = myCreateElement("section", {id: "chat"}, document.querySelector("body"))
+	else{
+		bigImgSection.innerHTML = "";
+		bigImgSection.classList.remove("d-none")
+	}
+	const times = myCreateElement("button", {className: "times", innerHTML: `<i class="fas fa-times"></i>`}, bigImgSection);
+	times.addEventListener('click', (e) => {
+		e.preventDefault();
+		bigImgSection.innerHTML = "";
+		bigImgSection.classList.add("d-none")
+	})
+
 	const container = myCreateElement("div", {
 		className: "container",
-	}, myCreateElement("section", {id: "chat"}, document.querySelector("body")));
+	}, bigImgSection);
 	const row = myCreateElement("div", {
 		className: "row py-4",
 	}, container);
 
 	//First col ||  Big Img
-	myCreateElement("div", {
-		className: "col-md-6 col-12 left",
-		innerHTML: `
-			<div class="img">
-                <img src="${owner.imgUrl}" alt="${owner.imgTitle || ""}">
-                <div class="paragraph"><p>${owner.ImgInfo || ""}</p></div>
-             </div>
-             <div class="d-flex my-2 mx-4 align-items-center userProfil gap-3" >
-                <img class="img-responsive" src="${owner.userImg}" alt="userimg">
-                <div>
-                  	<h5>${owner.fullName || owner.userName}</h5>
-                  	<p>${owner.bio || ""}</p>
-                </div>
-            </div>
-`
-	}, row);
+	const col1 = myCreateElement("div", {
+		className: "col-md-6 col-12 left"}, row);
+	myCreateElement("div", {className: "img", innerHTML: `
+				<img src="${owner.imgUrl}" alt="${owner.imgTitle || ""}">
+                <div class="infoPhoto">
+	                <p class="title">${owner.imgTitle || ""}</p>
+	                <p class="paragraph">${owner.imgInfo || ""}</p>
+				</div>
+	`}, col1);
+	const user = myCreateElement("div", {className: "d-flex my-2 mx-4 align-items-center userProfil gap-3"}, col1);
+
+	const img = myCreateElement("img", {className: "img-responsive", alt: owner.userName, src: owner.userImg || userDefaultImg}, user );
+	myCreateElement("div", {className: "", innerHTML: `
+			<h5>${owner.fullName || owner.userName}</h5>
+            <p>${owner.bio || ""}</p>
+	`}, user);
+
+	img.addEventListener('click', () => {
+		otherUserProfile(owner.ownerId);
+		bigImgSection.innerHTML = "";
+		bigImgSection.classList.add("d-none")
+	})
+
+
 	//Chat
 	const col2 = myCreateElement("div", {
 		className: "col-md-6 col-12 right",
@@ -61,12 +81,20 @@ const renderBigImg = (comments, owner) => {
 		}
 	}
 
-	send.addEventListener('click', (e) => {
-		e.preventDefault();
-		getUserData(userUid, createObj);
+	if(userUid === "notUser"){
+		input.setAttribute("disabled", "disabled");
+		input.placeholder = "Please register!";
+		send.addEventListener('click', (e) => {
+			e.preventDefault();
+		})
+	}else {
+		send.addEventListener('click', (e) => {
+			e.preventDefault();
+			getUserData(userUid, createObj);
 
-		pushComment(owner.ownerId, owner.imgId, messageObj);
-	})
+			pushComment(owner.ownerId, owner.imgId, messageObj);
+		})
+	}
 }
 
 export { renderBigImg }

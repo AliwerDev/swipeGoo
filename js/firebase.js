@@ -1,7 +1,7 @@
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
-import {getAnalytics} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-analytics.js";
 import {isHaveUser} from "./profile.js"
-import {get, getDatabase, onValue, ref, set, push, remove} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
+import {allImages} from "./functions.js";
+import {get,update, getDatabase, onValue, ref, set, push, remove} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
 
 import {
 	createUserWithEmailAndPassword,
@@ -19,19 +19,18 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-storage.js";
 
 const firebaseConfig = {
-	apiKey: "AIzaSyBgBEDP_NfB0wgRFII4BJl6-JnXJFPJGZ0",
-	authDomain: "wiipc-8ef19.firebaseapp.com",
-	databaseURL: "https://wiipc-8ef19-default-rtdb.asia-southeast1.firebasedatabase.app",
-	projectId: "wiipc-8ef19",
-	storageBucket: "wiipc-8ef19.appspot.com",
-	messagingSenderId: "834950905356",
-	appId: "1:834950905356:web:8c7b62bf37e97c9f223829",
-	measurementId: "G-V9B21FE615"
+	apiKey: "AIzaSyBODtPdwQqurj89ErjwkcaEkVc2wVkTt-I",
+	authDomain: "swipe-a8e56.firebaseapp.com",
+	databaseURL: "https://swipe-a8e56-default-rtdb.asia-southeast1.firebasedatabase.app",
+	projectId: "swipe-a8e56",
+	storageBucket: "swipe-a8e56.appspot.com",
+	messagingSenderId: "498897302123",
+	appId: "1:498897302123:web:8e1451a9290fcaf415f72e",
+	measurementId: "G-QPZR5BR575"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 const db = getDatabase();
 const auth = getAuth();
@@ -78,19 +77,23 @@ function uploadProcess(img, progressbar, user) {
 		},
 		() => {
 			getDownloadURL(UploadTask.snapshot.ref).then((downloadURL) => {
-				console.log(downloadURL);
 				img.src = downloadURL;
 				if(user) {
 					pushUserImg(userUid, downloadURL);
-
-				}else{
-					pushUserImages(userUid, {url: downloadURL, ownerId: userUid});
-					console.log("imaages add")
 				}
 				progressbar.classList.add("d-none")
 			});
 		}
 	);
+}
+function func(){
+	getDownloadURL(UploadTask.snapshot.ref).then((downloadURL) => {
+		img.src = downloadURL;
+		if(user) {
+			pushUserImg(userUid, downloadURL);
+		}
+		progressbar.classList.add("d-none")
+	});
 }
 
 function readUrl (file) {
@@ -115,32 +118,59 @@ function countUserImages(id, img, callback){
 }
 
 
-function pushUserImages(id, img){
+export function pushUserImages(id, img){
 	countUserImages(id, img, pushUserImagesResult);
 }
 
 function pushUserImagesResult(id, img, count) {
 	img.id = ++count;
+	img.date = (new Date()).getTime()
 	set(ref(db, `users/${id}/images/${count}`), img)
-		.then((ref) => {
-			alert('img  qushildi')
+		.then(() => {
+			console.log('img  qushildi')
 		})
 		.catch(err => console.log(err));
 	set(ref(db, `users/${id}/count`), count)
-		.then((ref) => {
+		.then(() => {
 			console.log('count oshdi');
 		})
 		.catch(err => console.log(err));
 }
 
+function setImage (id, img){
+	set(ref(db, 'users/' + userUid + "/images/" + id), img)
+		.then(() => {
+		})
+		.catch(err => console.log(err));
+}
+
+function deleteImg(ownerId, imgId) {
+	remove(ref(db, `users/${ownerId}/images/${imgId}`));
+}
+
 function addUser(userData){
 	set(ref(db, 'users/' + userData.uid), userData)
-		.then((ref) => {
+		.then(() => {
 		})
 		.catch(err => console.log(err));
 	set(ref(db, 'users/' + userData.uid + "/count"), "0")
 		.then((ref) => {
 			console.log(ref)
+		})
+		.catch(err => console.log(err));
+}
+
+function updateProfile(uid, data) {
+	set(ref(db, 'users/' + uid + "/userName"), data.userName)
+		.then(() => {
+		})
+		.catch(err => console.log(err));
+	set(ref(db, 'users/' + uid + "/fullName"), data.fullName)
+		.then(() => {
+		})
+		.catch(err => console.log(err));
+	set(ref(db, 'users/' + uid + "/userBio"), data.userBio)
+		.then(() => {
 		})
 		.catch(err => console.log(err));
 }
@@ -161,13 +191,38 @@ function createUser (userData) {
 		})
 }
 
+//isFollowed
+function isFollowFirebase(id, owner, callback){
+	get(ref(db, `users/${id}/following/`))
+		.then((ref) => callback(ref.val() || {}))
+		.catch((err) => console.log(err))
+}
+
+//edit Follow
+function editFollow(id, owner, bool = false){
+	if(bool){
+		remove(ref(db, `users/${id}/following/${owner}`))
+		remove(ref(db, `users/${owner}/followers/${id}`))
+	}
+	else{
+		set(ref(db, `users/${id}/following/${owner}`), "true")
+			.then(() => {
+			})
+			.catch(err => console.log(err));
+		set(ref(db, `users/${owner}/followers/${id}`), "true")
+			.then(() => {
+			})
+			.catch(err => console.log(err));
+	}
+}
+
 function signIn(dataUser) {
 	signInWithEmailAndPassword(auth, dataUser.email, dataUser.password)
 		.then((cred) => {
 			isHaveUser(cred.user.uid);
 			userUid = cred.user.uid;
 		})
-		.catch((err) => {
+		.catch(() => {
 			alert("parol yoki email xato");
 		});
 }
@@ -188,14 +243,9 @@ isSignIn((uid) => {
 	userUid = uid;
 });
 
-// function getUserImages(id, callback) {
-// 	onValue(ref(db, `users/${id}/images/`), (data) => {
-// 		callback(data.val() || {});
-// 	})
-// }
 function getUserImages(id, callback) {
 	onValue(ref(db, `users/${id}/images/`), (data) => {
-		callback(data.val() || {}, id);
+		callback(data.val() || {});
 	})
 }
 
@@ -204,12 +254,18 @@ function getUserData(id, callback){
 		callback(data.val() || {});
 	})
 }
+function getUserData2(id, callback){
+	get(ref(db, `users/${id}`))
+		.then((ref) => callback(ref.val()))
+		.catch(err => console.log(err))
+}
 
 function getUsers (callback) {
 	onValue(ref(db, 'users/'), (data) => {
 		callback(data.val() || {});
 	})
 }
+getUsers(allImages);
 
 
 function signOutUser (callback = () => {}) {
@@ -218,7 +274,7 @@ function signOutUser (callback = () => {}) {
 			callback(true);
 			console.log("user Chiqib ketti")
 		})
-		.catch((error) => {
+		.catch(() => {
 			callback(false);
 			console.log("user chiqib keta olmadi")
 		});
@@ -232,15 +288,13 @@ function getLikes (uid, id, callback){
 
 function pushLike(uid, id, likeId) {
 	set(ref(db, `users/${uid}/images/${id}/likes/${likeId}`), likeId)
-		.then((ref) => {
-			console.log(ref)
+		.then(() => {
 		})
 		.catch(err => console.log(err));
 }
 function removeLike(uid, id, likeId){
 	remove(ref(db, `users/${uid}/images/${id}/likes/${likeId}`))
-		.then((ref) => {
-			console.log(ref)
+		.then(() => {
 		})
 		.catch(err => console.log(err));
 }
@@ -260,7 +314,7 @@ function pushComment(ownerId, id, message) {
 		.catch(err => console.log(err));
 }
 
-export {getComments, pushComment, signOutUser, createUser, signIn, getUsers, getUserImages, getUserData, uploadProcess, readUrl, getLikes, pushLike, removeLike}
+export { getUserData2, editFollow, isFollowFirebase, setImage, updateProfile, getComments, deleteImg,  pushComment, signOutUser, createUser, signIn, getUsers, getUserImages, getUserData, uploadProcess, readUrl, getLikes, pushLike, removeLike}
 
 
 

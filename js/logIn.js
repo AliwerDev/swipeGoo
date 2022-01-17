@@ -37,7 +37,7 @@ function creatSignUpForm (father) {
 	const signUpBtn = myCreateElement("button", {type: "button", className: "logBtn active", innerHTML: "Sign Up"}, forHeader);
 
 	const userName = myCreateElement("input", {required: true, placeholder: "User name"}, form);
-	const fullName = myCreateElement("input", {placeholder: "Full name"}, form);
+	const fullName = myCreateElement("input", {required: true, placeholder: "Full name"}, form);
 	const email = myCreateElement("input", {type: "email", required: true, placeholder: "Email"}, form);
 	const password = myCreateElement("input", {type: "password", required: true, placeholder: "Password"}, form);
 
@@ -52,7 +52,6 @@ function creatSignUpForm (father) {
 			email: email.value,
 			fullName: fullName.value,
 			userName: userName.value,
-			password: password.value,
 		}
 		createUser(userData);
 	})

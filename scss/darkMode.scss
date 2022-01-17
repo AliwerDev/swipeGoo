@@ -1,70 +1,103 @@
   body.dark {
-      transition: .5s;
-      color: white !important;
+    transition: .5s;
+    color: white !important;
     background-color: #2f3640;
-    header{
-        transition: .5s;
-        background-color: #353b48;
+    .loader{
+      background-color: #2f3640;
     }
-    aside{
-        background-color: #171B20;
+
+    header {
+      transition: .5s;
+      background-color: #353b48;
+
+      .profile {
+        img {
+          width: 45px;
+          height: 45px;
+          box-shadow: 0 1px 4px 2px #f24e1e;
+        }
+      }
     }
-    input{
-        background-color: #2F3640;
-        color: #f24f1ec0;
+
+    aside {
+      background-color: #171B20;
     }
-    .load-more{
-        background-color: #f24f1ec0;
+
+    #userProfileModal {
+      background-color: #171B20 !important;
+      color: #f24e1e;
+
+      i {
+        color: #f24e1e;
+      }
+
+      button {
+
+        .fa-camera,
+        .fa-check {
+          color: white;
+        }
+      }
+    }
+
+    input {
+      background-color: #2F3640;
+      color: #fc5a29;
+    }
+
+    .fa-moon {
+      display: none;
+
+    }
+
+    .fa-sun {
+      display: block;
+      cursor: pointer;
+    }
+
+    #chat {
+      background-color: #2f3640;
+
+      .right {
+        background: url('https://krot.info/uploads/posts/2021-02/1613661522_28-p-foni-dlya-chatov-telegram-28.jpg');
+
+        .message{
+          color: #fff;
+        }
+      }
+    }
+
+    .addImgModal{
+      .row{
+        background-color: #2F3640 !important;
+      }
+      input, textarea{
+        color: #f24e1e !important;
+        font-weight: 400;
+      }
     }
   }
-  
 
   .checkbox {
     opacity: 0;
     position: absolute;
+
   }
-  
+
   .label {
-    width: 50px;
-    height: 26px;
-    background-color:#111;
-    display: flex;
-    border-radius:50px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    position: relative;
+    width: 25px;
+    height: 25px;
+    padding-top: 5px;
     transform: scale(1.5);
-  }
 
-.ball {
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    border-radius: 50%;
-    transition: transform 0.2s linear;
-}
+    .fa-moon {
+      display: block;
+      color: black;
+      cursor: pointer;
+    }
 
-/*  target the elemenent after the label*/
-.checkbox:checked + .label .ball{
-    transform: translateX(24px);
-}
-.checkbox:checked + .label {
-      background-color: #F24E1E;
-  }
-
-
-
-
-  .fa-moon {
-      color: white;
-    // color: #a5b1c2;
-  }
-  
-  .fa-sun {
-      color: white;
-    // color: #fff200;
+    .fa-sun {
+      display: none;
+      color: rgb(255, 115, 0);
+    }
   }

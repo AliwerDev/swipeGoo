@@ -1,5 +1,5 @@
-import {getUsers, getUserImages} from "./firebase.js";
-import {myCreateElement, renderImgBox} from "./functions.js";
+import {getUsers, getUserImages, getUserData, getUserData2} from "./firebase.js";
+import {myCreateElement, openProfileGallery, otherUserProfile, renderImgBox, userAccountRender} from "./functions.js";
 
 const arrowBtn = document.querySelector(".arrowBtn");
 const aside = document.querySelector("#aside");
@@ -20,37 +20,50 @@ arrowBtn.addEventListener('click', () => {
 	}
 })
 
+const renderAside = (value) => {
+	const li = myCreateElement("li", {className: "d-flex align-items-center"}, menuUsers);
+	const minImg = myCreateElement("img", {className: "minImg", src: value.userImg || userDefaultImg, alt: value.userName}, li);
+	const p = myCreateElement("span", {innerText: value.userName}, li)
+	li.addEventListener('click', () => {
+		lastActiveLi.classList.remove("active");
+		li.classList.add("active");
+		lastActiveLi = li;
+		otherUserProfile(value.uid);
 
-const renderAside = (data) => {
-	const dataUsers = Object.entries(data);
+		if(!bgHide.classList.contains("d-none")){
+			bgHide.classList.add("d-none")
+		}
+		if(!aside.classList.contains("hide")){
+			aside.classList.add("hide")
+		}
+	})
+}
+
+//Render follows
+function followingArr(data) {
 	menuUsers.innerHTML = "";
+	const title = myCreateElement("h3", {className: "ps-3", innerHTML: "Following"}, menuUsers);
+	const dataArr = Object.entries(data);
+	aside.classList.remove("d-none")
+	if(dataArr.length === 0){
+		aside.classList.add("d-none")
+	}
 
-	dataUsers.map((item) => {
-		const value = item[1];
-		const id = item[0];
+	dataArr.map(item => {
+		const uid = item[0];
+		getUserData2(uid, renderAside)
+	})
+}
+function followersArr(data) {
+	const title2 = myCreateElement("h3", {className: "ps-3", innerHTML: "Followers"}, menuUsers);
+	const dataArr = Object.entries(data);
 
-		const li = myCreateElement("li", {className: "d-flex align-items-center"}, menuUsers);
-		const minImg = myCreateElement("img", {className: "minImg", src: value.userImg || userDefaultImg, alt: value.userName}, li);
-		const p = myCreateElement("span", {innerText: value.userName}, li)
-		li.addEventListener('click', () => {
-			imgGallery.innerHTML = "";
-			lastActiveLi.classList.remove("active");
-			li.classList.add("active");
-			lastActiveLi = li;
-			getUserImages(id, renderImgBox);
-
-			if(!bgHide.classList.contains("d-none")){
-				bgHide.classList.add("d-none")
-			}
-			if(!aside.classList.contains("hide")){
-				aside.classList.add("hide")
-			}
-		})
+	dataArr.map(item => {
+		const uid = item[0];
+		getUserData2(uid, renderAside)
 	})
 
 	loading.classList.add("d-none");
 }
 
-getUsers(renderAside);
-
-
+export { followingArr, followersArr }

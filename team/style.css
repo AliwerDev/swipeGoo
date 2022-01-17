@@ -1,0 +1,150 @@
+.title {
+  color: #f24e1e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: normal;
+}
+.title a {
+  color: #f24e1e;
+}
+.title a:hover {
+  color: #f24e1e;
+}
+
+.members .row .col-xl-3 .card {
+  position: relative;
+  width: 246.8px;
+  height: 290px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: end;
+  border-radius: 10px;
+}
+.members .row .col-xl-3 .card img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.members .row .col-xl-3 .card .text-center {
+  transition: 0.3s;
+  width: 100%;
+  z-index: 2;
+  transform: translateY(224px);
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.members .row .col-xl-3 .card .text-center p {
+  margin: 0;
+  font-size: 15px;
+}
+.members .row .col-xl-3 .card .text-center h4 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: bold;
+}
+.members .row .col-xl-3 .card .icons-team {
+  position: absolute;
+  opacity: 0;
+  z-index: 2;
+  transform: translateY(130px);
+}
+.members .row .col-xl-3 .card .icons-team i {
+  font-size: 40px;
+  color: white;
+}
+.members .row .col-xl-3 .card .icons-team i:hover {
+  color: #f24f1e8e;
+}
+.members .row .col-xl-3 .card:hover .text-center {
+  background-color: #f24f1e85;
+  color: white;
+}
+.members .row .col-xl-3 .card:hover .icons-team {
+  opacity: 1;
+}
+.members .row .col-xl-3 .card:hover img {
+  filter: blur(3px);
+}
+
+.middle {
+  text-align: center;
+}
+
+.services {
+  box-sizing: border-box;
+}
+.services .circle {
+  font-size: 35px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #f24e1e;
+  color: white;
+}
+.services .text i {
+  color: #f24e1e;
+  font-size: 40px;
+}
+
+body.dark {
+  transition: 0.5s;
+  color: white !important;
+  background-color: #2f3640;
+}
+body.dark .card {
+  border-color: white !important;
+  background-color: #2f3640;
+  color: white;
+}
+body.dark .card .text-center {
+  background-color: #2f36406e !important;
+}
+body.dark .card:hover .text-center {
+  background-color: #f24f1e85 !important;
+  color: white;
+}
+body.dark .fa-moon {
+  display: none;
+}
+body.dark .fa-sun {
+  display: block;
+  cursor: pointer;
+}
+
+#discussionTeamGif {
+  width: 100%;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 25px;
+  height: 25px;
+  transform: scale(1.5);
+  margin-top: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+.label .fa-moon {
+  display: block;
+  color: black;
+  cursor: pointer;
+}
+.label .fa-sun {
+  display: none;
+  color: #ff7300;
+}
+
+/*# sourceMappingURL=style.css.map */

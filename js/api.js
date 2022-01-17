@@ -1,3 +1,5 @@
+import {shuffle, openAllGallery} from "./functions.js";
+
 class PhotoGallery{
     constructor(){
         this.API_KEY = '563492ad6f917000010000011136dff132a04096b5332f206cbd5d10';
@@ -19,9 +21,6 @@ class PhotoGallery{
             brand.classList.add("d-none");
             this.getSearchedImages(e);
         });
-        // if(imgGallery.scrollTop === imgGallery.clientHeight){
-        //     this.loadMoreImages(e);
-        // }
         this.loadMore.addEventListener('click', (e)=>{
             this.loadMoreImages(e);
         })
@@ -34,6 +33,7 @@ class PhotoGallery{
                 imgGallery.classList.add("d-none")
                 apiGallery.classList.remove("d-none")
                 this.getImg(this.pageIndex);
+                openAllGallery();
             })
     }
     async getImg(index){
@@ -54,7 +54,7 @@ class PhotoGallery{
         return data;
     }
     GenerateHTML(photos){
-        photos.forEach(photo=>{
+        shuffle(photos).forEach(photo=>{
             const item= document.createElement('div');
             item.classList.add('item');
             item.innerHTML = `

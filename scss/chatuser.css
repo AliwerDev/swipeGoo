@@ -1,0 +1,159 @@
+#chat {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  height: 100vh;
+  z-index: 999999999;
+}
+
+#chat .times {
+  font-size: 18px;
+  position: absolute;
+  color: red;
+  top: 10px;
+  right: 10px;
+}
+
+#chat .row {
+  padding: 0 !important;
+  border-radius: 30px;
+  margin-top: 5vh;
+  min-height: 90vh;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.397);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.397);
+}
+
+#chat .row .left {
+  border-right: 5px solid rgba(128, 128, 128, 0.301) !important;
+  padding: 0;
+}
+
+#chat .row .left .img {
+  background: black;
+  background: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(0%, black), color-stop(0%, rgba(0, 0, 0, 0.740231)), color-stop(0%, rgba(0, 0, 0, 0.801856)), color-stop(5%, rgba(0, 0, 0, 0.695413)), color-stop(8%, rgba(0, 0, 0, 0.597374)), color-stop(14%, rgba(73, 72, 72, 0.521744)), color-stop(21%, rgba(131, 130, 130, 0)), to(rgba(131, 130, 130, 0)));
+  background: linear-gradient(0deg, black 0%, black 0%, rgba(0, 0, 0, 0.740231) 0%, rgba(0, 0, 0, 0.801856) 0%, rgba(0, 0, 0, 0.695413) 5%, rgba(0, 0, 0, 0.597374) 8%, rgba(73, 72, 72, 0.521744) 14%, rgba(131, 130, 130, 0) 21%, rgba(131, 130, 130, 0) 100%);
+  height: 85%;
+  position: relative;
+  border-top-left-radius: 30px;
+  -webkit-box-shadow: inset 0 0 0.5em 0.1em rgba(0, 0, 0, 0.377) !important;
+          box-shadow: inset 0 0 0.5em 0.1em rgba(0, 0, 0, 0.377) !important;
+}
+
+#chat .row .left .img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 30px;
+}
+
+#chat .row .left .img .paragraph {
+  width: 200px;
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 6;
+  color: white;
+  -webkit-backdrop-filter: blur(7px);
+          backdrop-filter: blur(7px);
+  border-top-right-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#chat .row .left .userProfil {
+  margin: 20px 0px;
+}
+
+#chat .row .left .userProfil div p {
+  margin: 0;
+}
+
+#chat .row .left div .img-responsive {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.425);
+}
+
+#chat .row .right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  padding: 20px;
+}
+
+#chat .row .right .messageBox {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+}
+
+#chat .row .right .messageBox.myMessage {
+  color: chartreuse !important;
+}
+
+#chat .row .right .messageBox img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+#chat .row .right .messageBox .message {
+  border: 1px solid red;
+  padding: 10px;
+}
+
+#chat .row .right input {
+  -webkit-box-shadow: inset 0 0 0.5em 0.1em rgba(0, 0, 0, 0.377) !important;
+          box-shadow: inset 0 0 0.5em 0.1em rgba(0, 0, 0, 0.377) !important;
+}
+
+#chat .row .right button {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+/*# sourceMappingURL=chatuser.css.map */

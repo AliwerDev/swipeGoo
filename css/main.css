@@ -3,19 +3,58 @@ body.dark {
   color: white !important;
   background-color: #2f3640;
 }
+body.dark .loader {
+  background-color: #2f3640;
+}
 body.dark header {
   transition: 0.5s;
   background-color: #353b48;
 }
+body.dark header .profile img {
+  width: 45px;
+  height: 45px;
+  box-shadow: 0 1px 4px 2px #f24e1e;
+}
 body.dark aside {
   background-color: #171B20;
 }
+body.dark #userProfileModal {
+  background-color: #171B20 !important;
+  color: #f24e1e;
+}
+body.dark #userProfileModal i {
+  color: #f24e1e;
+}
+body.dark #userProfileModal button .fa-camera,
+body.dark #userProfileModal button .fa-check {
+  color: white;
+}
 body.dark input {
   background-color: #2F3640;
-  color: #f24f1ec0;
+  color: #fc5a29;
 }
-body.dark .load-more {
-  background-color: #f24f1ec0;
+body.dark .fa-moon {
+  display: none;
+}
+body.dark .fa-sun {
+  display: block;
+  cursor: pointer;
+}
+body.dark #chat {
+  background-color: #2f3640;
+}
+body.dark #chat .right {
+  background: url("https://krot.info/uploads/posts/2021-02/1613661522_28-p-foni-dlya-chatov-telegram-28.jpg");
+}
+body.dark #chat .right .message {
+  color: #fff;
+}
+body.dark .addImgModal .row {
+  background-color: #2F3640 !important;
+}
+body.dark .addImgModal input, body.dark .addImgModal textarea {
+  color: #f24e1e !important;
+  font-weight: 400;
 }
 
 .checkbox {
@@ -24,44 +63,19 @@ body.dark .load-more {
 }
 
 .label {
-  width: 50px;
-  height: 26px;
-  background-color: #111;
-  display: flex;
-  border-radius: 50px;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px;
-  position: relative;
+  width: 25px;
+  height: 25px;
+  padding-top: 5px;
   transform: scale(1.5);
 }
-
-.ball {
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  border-radius: 50%;
-  transition: transform 0.2s linear;
+.label .fa-moon {
+  display: block;
+  color: black;
+  cursor: pointer;
 }
-
-/*  target the elemenent after the label*/
-.checkbox:checked + .label .ball {
-  transform: translateX(24px);
-}
-
-.checkbox:checked + .label {
-  background-color: #F24E1E;
-}
-
-.fa-moon {
-  color: white;
-}
-
-.fa-sun {
-  color: white;
+.label .fa-sun {
+  display: none;
+  color: #ff7300;
 }
 
 .bgHide {
@@ -72,6 +86,10 @@ body.dark .load-more {
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 50;
+}
+
+.form-control:focus {
+  box-shadow: none;
 }
 
 ::-webkit-scrollbar {
@@ -99,6 +117,7 @@ header {
   z-index: 999;
   width: 100%;
   max-width: 1550px;
+  padding: 20px 50px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -120,7 +139,7 @@ header form {
 }
 header form input {
   border: none;
-  padding: 5px 20px;
+  padding: 7px 20px;
   outline: none;
   border-radius: 50px;
   width: 100%;
@@ -131,7 +150,8 @@ header form input::placeholder {
   color: silver;
 }
 header .logIn .logInBtn {
-  padding: 8px 40px;
+  width: 120px;
+  padding: 8px 0px;
   border-radius: 50px;
   background-image: linear-gradient(262deg, #f68052 5%, #f16840 20%, #f24e1e 50%, #f16840 80%, #f68052 95%);
   box-shadow: 0 2px 4px rgba(255, 122, 5, 0.5);
@@ -147,6 +167,7 @@ header .profile img {
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+  box-shadow: 0 1px 4px 2px rgba(0, 0, 0, 0.3);
 }
 
 section {
@@ -157,6 +178,7 @@ section aside {
   position: fixed;
   padding: 20px 0;
   z-index: 990;
+  top: 70 !important;
   left: 0;
   width: 300px;
   height: 100%;
@@ -251,7 +273,7 @@ section main {
   width: 100%;
 }
 section main .gallery {
-  column-count: 4;
+  column-count: 5;
   margin: 0 auto;
   padding: 30px 50px;
 }
@@ -276,6 +298,7 @@ section main .gallery .img-box:hover img {
 }
 section main .gallery .img-box img {
   width: 100%;
+  min-height: 150px;
   object-fit: cover;
   border-radius: 16px;
   transition: all 0.5s;
@@ -304,7 +327,6 @@ section main .gallery .img-box span .download {
   width: 40px;
   border-radius: 50%;
   background-color: red;
-  color: white;
 }
 section main .gallery .img-box span .comment {
   left: 10px;
@@ -327,6 +349,7 @@ section main .gallery .img-box span .cloud {
   border-radius: 50%;
   background-color: #f2e9e4;
   font-size: 20px;
+  color: black !important;
 }
 section main .gallery .img-box span .nuqta {
   right: 10px;
@@ -336,6 +359,7 @@ section main .gallery .img-box span .nuqta {
   border-radius: 50%;
   background-color: #f2e9e4;
   font-size: 20px;
+  color: black !important;
 }
 section main .gallery .add-img {
   width: 100%;
@@ -351,16 +375,6 @@ section main .gallery .add-img i {
   color: #fff;
 }
 
-@media screen and (max-width: 1024px) {
-  .gallery {
-    column-count: 3;
-  }
-}
-@media screen and (max-width: 640px) {
-  .gallery {
-    column-count: 2;
-  }
-}
 .hello {
   display: flex;
   flex-direction: column;
@@ -378,7 +392,7 @@ section main .gallery .add-img i {
   width: 250px;
   height: auto;
   position: absolute;
-  z-index: 123123123123123130000000;
+  z-index: 1231231231233;
 }
 
 .loader {
@@ -443,6 +457,21 @@ section main .gallery .add-img i {
     top: 134px;
   }
 }
+@media screen and (max-width: 990px) and (min-width: 200px) {
+  #title {
+    text-align: center;
+    padding: 50px 30px 10px 30px;
+  }
+
+  .team-about {
+    justify-content: center;
+  }
+
+  #girl-photo {
+    display: block;
+    margin: 0 auto;
+  }
+}
 @media screen and (max-width: 775px) and (min-width: 490.01px) {
   #logocam {
     display: inline-block !important;
@@ -453,14 +482,7 @@ section main .gallery .add-img i {
   }
 
   header {
-    display: flex;
-    flex-wrap: wrap;
     padding: 15px 35px !important;
-  }
-  header .logIn .logInBtn {
-    width: 65px;
-    font-size: 17px;
-    padding: 6px 11px;
   }
 
   section aside {
@@ -477,20 +499,18 @@ section main .gallery .add-img i {
     flex-wrap: wrap;
     padding: 25px !important;
   }
+  header #logo {
+    height: 40px;
+  }
   header form {
     order: 3;
     margin-top: 10px;
     width: 100%;
   }
-  header .logIn .logInBtn {
-    width: 65px;
-    font-size: 16px;
-    padding: 6px 13px;
-  }
 
   section aside {
     width: 260px;
-    top: 134px;
+    top: 140px !important;
   }
   section aside.hide {
     left: -260px;
@@ -498,6 +518,34 @@ section main .gallery .add-img i {
   section main .gallery {
     padding: 30px 20px 10px 20px;
     column-count: 2;
+  }
+
+  .team-about a {
+    font-size: 15px !important;
+    width: 250px !important;
+    padding: 5px 10px !important;
+  }
+
+  .load-more {
+    width: 200px !important;
+    font-size: 16px !important;
+    padding: 10px !important;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 650px) and (min-width: 200px) {
+  .comment {
+    display: flex;
+    left: 10px;
+    top: 15px;
+  }
+
+  .cloud {
+    left: 20px;
+  }
+
+  .nuqta {
+    right: 20px;
   }
 }
 .bgHideOut {
@@ -563,10 +611,18 @@ section main .gallery .add-img i {
   padding: 10px;
   margin: 10px;
   object-fit: cover;
-  border: 5px solid white;
+  border: 5px solid transparent;
+}
+#userProfileModal .info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 #userProfileModal .info input {
+  background-color: transparent;
   text-align: center;
+  margin: 0 auto;
   margin-bottom: 15px;
   padding: 0;
   border: none;
@@ -604,6 +660,28 @@ section main .gallery .add-img i {
 }
 #userProfileModal .info .btn3 {
   background-color: #fff200;
+}
+
+.addPhotoBox {
+  display: flex;
+  justify-content: center;
+}
+.addPhotoBox .addImgButton {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background-color: #f24e1e;
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: white;
+}
+.addPhotoBox .addImgButton i {
+  color: white !important;
+}
+
+.updateProfile {
+  background-color: #0be881;
+  border: 3px solid white !important;
 }
 
 body .gallery .item {
@@ -675,28 +753,44 @@ body .load-more {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background: rgba(0, 0, 0, 0.27);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.2px);
+  -webkit-backdrop-filter: blur(9.2px);
   width: 100%;
-  height: 100vh;
   z-index: 999999999;
+  height: 100vh;
+  overflow: auto;
+}
+#chat .times {
+  font-size: 18px;
+  position: absolute;
+  color: white;
+  z-index: 123;
+  top: 10px;
+  right: 10px;
+  border-radius: 5px;
+  background-color: #f24e1e;
+  border: none;
+  padding: 8px 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 #chat .row {
+  margin: 10px 0;
   padding: 0 !important;
-  border-radius: 30px;
-  margin-top: 5vh;
-  min-height: 90vh;
+  overflow: hidden !important;
+  border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.397);
 }
 #chat .row .left {
-  border-right: 5px solid rgba(128, 128, 128, 0.301) !important;
   padding: 0;
+  min-height: 500px;
 }
 #chat .row .left .img {
   background: black;
   background: linear-gradient(0deg, black 0%, black 0%, rgba(0, 0, 0, 0.7402311266) 0%, rgba(0, 0, 0, 0.8018557765) 0%, rgba(0, 0, 0, 0.6954131995) 5%, rgba(0, 0, 0, 0.5973739838) 8%, rgba(73, 72, 72, 0.5217437317) 14%, rgba(131, 130, 130, 0) 21%, rgba(131, 130, 130, 0) 100%);
   height: 85%;
   position: relative;
-  border-top-left-radius: 30px;
   box-shadow: inset 0 0 0.5em 0.1em rgba(0, 0, 0, 0.377) !important;
 }
 #chat .row .left .img img {
@@ -705,28 +799,31 @@ body .load-more {
   left: 0;
   z-index: -1;
   width: 100%;
+  object-fit: cover;
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-top-left-radius: 30px;
 }
-#chat .row .left .img .paragraph {
-  width: 200px;
-  height: 80px;
+#chat .row .left .img .infoPhoto {
+  border-top-right-radius: 10px;
+  color: white;
+  background: rgba(187, 178, 178, 0.28);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.3px);
+  -webkit-backdrop-filter: blur(7.3px);
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 6;
-  color: white;
-  backdrop-filter: blur(7px);
-  border-top-right-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 10px 20px;
+}
+#chat .row .left .img .infoPhoto .title {
+  font-size: 22px;
+  font-weight: 700;
 }
 #chat .row .left .userProfil {
   margin: 20px 0px;
+  object-fit: cover;
 }
 #chat .row .left .userProfil div p {
   margin: 0;
@@ -743,29 +840,70 @@ body .load-more {
   align-items: end;
   justify-content: end;
   padding: 20px;
+  background: url("../images/chatbg.png");
+  background-position: center;
+  background-size: cover;
+}
+#chat .row .right .chat-body {
+  height: 500px;
+  overflow: auto;
+  width: 100%;
 }
 #chat .row .right .messageBox {
+  color: black !important;
   width: 100%;
   display: flex;
-  align-items: end;
+  overflow: hidden;
 }
 #chat .row .right .messageBox.myMessage {
-  color: chartreuse !important;
+  color: black !important;
+  justify-content: end;
+}
+#chat .row .right .messageBox.myMessage img {
+  order: 2;
+}
+#chat .row .right .messageBox.myMessage .userName {
+  color: #b13e27 !important;
+  text-align: right;
 }
 #chat .row .right .messageBox img {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin-right: 5px;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 #chat .row .right .messageBox .message {
-  border: 1px solid red;
+  margin: 10px;
   padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(11.1px);
+  -webkit-backdrop-filter: blur(11.1px);
 }
-#chat .row .right input {
-  box-shadow: inset 0 0 0.5em 0.1em rgba(0, 0, 0, 0.377) !important;
+#chat .row .right .messageBox .message .messageText {
+  font-size: 18px;
 }
-#chat .row .right button {
+#chat .row .right .messageBox .message .userName {
+  font-size: 15px;
+  color: #f24e1e;
+}
+#chat .row .right form {
+  background-color: white;
+  padding: 0 20px;
+  border-radius: 50px;
+  margin-top: 10px;
+}
+#chat .row .right form input {
+  background-color: white;
+  border: none;
+  margin-right: 20px;
+}
+#chat .row .right form button {
   width: 40px;
   height: 40px;
   border-radius: 5px;
@@ -863,11 +1001,192 @@ body .load-more {
   background-color: white !important;
 }
 
-#about .line {
-  height: 3px;
+@media screen and (max-width: 410px) and (min-width: 300px) {
+  button {
+    font-size: 14px !important;
+    padding: 7px 15px !important;
+    margin: 0;
+  }
+}
+.brand-part {
+  margin-bottom: 40px;
+}
+.brand-part .team-about a {
+  background-color: #f24e1e;
+  padding: 10px 30px;
+  margin-right: 30px;
+  border: 3px solid transparent;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: 0.2s linear;
+}
+.brand-part .team-about a:hover {
+  background-color: transparent;
+  border: 3px solid #f24e1e;
+  color: #f24e1e;
+}
+
+.addImgModal {
+  padding: 50px 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.27);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.2px);
+  -webkit-backdrop-filter: blur(9.2px);
+  overflow: auto;
+  z-index: 999999999999999;
   width: 100%;
-  background: #000;
-  opacity: 0.6;
+  height: 100vh;
+}
+.addImgModal .row {
+  padding: 20px 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+  background-color: white;
+}
+.addImgModal .col-md-6 .infoBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-direction: column;
+  border-radius: 10px;
+  border: none;
+  height: 100%;
+  padding: 15px;
+}
+.addImgModal .col-md-6 .infoBox input {
+  padding: 5px;
+}
+.addImgModal .col-md-6 .infoBox textarea {
+  height: 50%;
+  padding: 10px;
+  resize: none;
+}
+.addImgModal .col-md-6 .infoBox input,
+.addImgModal .col-md-6 .infoBox textarea {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.addImgModal .col-md-6 .infoBox div {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+.addImgModal .col-md-6 .infoBox div button {
+  width: 50%;
+  background-color: transparent;
+  border-radius: 20px;
+  padding: 8px 16px;
+  outline: none;
+  border: none;
+  color: white;
+}
+.addImgModal .col-md-6 .infoBox div .beck {
+  background-color: #f86d42;
+}
+.addImgModal .col-md-6 .infoBox div .submitImg {
+  background-color: #0be881;
+}
+.addImgModal .col-md-6 .imgBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  height: 100%;
+  width: 100%;
+}
+.addImgModal .col-md-6 .imgBox .img-fluid {
+  margin: 0 auto;
+  border-radius: 5px;
+  object-fit: cover;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .addImgModal .row {
+    align-items: flex-start;
+  }
+  .addImgModal .row .col-md-6 .infoBox {
+    justify-content: flex-start;
+  }
+}
+
+#userAccount .container .accountRow {
+  display: flex;
+  gap: 30px;
+}
+#userAccount .container .accountRow .left .accountImg {
+  width: 300px;
+  height: 300px;
+}
+#userAccount .container .accountRow .left .accountImg img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-size: cover;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+#userAccount .container .accountRow .right .infoProfile {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#userAccount .container .accountRow .right .infoProfile .userName {
+  font-size: 22px;
+  font-weight: 700;
+}
+#userAccount .container .accountRow .right .infoProfile .followBtn {
+  border: none;
+  outline: none;
+  background-color: #F24E1E;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 50px;
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 700px) and (min-width: 490.01px) {
+  .accountRow {
+    padding-left: 50px;
+  }
+  .accountRow .left .accountImg {
+    width: 220px !important;
+    height: 220px !important;
+  }
+}
+@media screen and (max-width: 490px) and (min-width: 200px) {
+  .accountRow {
+    gap: 15px !important;
+  }
+  .accountRow .left .accountImg {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  .accountRow .right .followBtn {
+    padding: 6px 30px !important;
+  }
+  .accountRow .right .infoProfile p {
+    margin: 5px;
+  }
+  .accountRow .right .infoProfile .userName {
+    font-size: 19px !important;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

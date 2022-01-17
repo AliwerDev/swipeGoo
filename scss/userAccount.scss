@@ -1,0 +1,87 @@
+#userAccount{
+ .container{
+   .accountRow{
+     display: flex;
+     gap: 30px;
+     .left{
+       .accountImg{
+         width: 300px;
+         height:300px;
+
+         img{
+           width: 100%;
+           height:100%;
+           border-radius:50%;
+           background-size: cover;
+           object-fit:cover;
+           box-shadow:0 4px 8px rgba(0,0,0,0.5)
+         }
+       }
+
+     }
+     .right{
+        .infoProfile{
+          height:100%;
+          display: flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items: flex-start;
+          .userName{
+            font-size:22px;
+            font-weight:700;
+          }
+          .followBtn{
+            border: none;
+            outline: none;
+            background-color: #F24E1E;
+            color: white;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 50px;
+            border-radius: 50px;
+          }
+
+
+        }
+     }
+   }
+ }
+}
+@media screen and (max-width: 700px) and (min-width: 490.01px) {
+  .accountRow{
+    padding-left: 50px;
+    .left{
+      .accountImg{
+        width: 220px !important;
+        height: 220px !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 490px) and (min-width: 200px) {
+  .accountRow{
+    gap: 15px !important;
+    .left{
+      .accountImg{
+        width: 180px !important;
+        height: 180px !important;
+      }
+    }
+    .right{
+      .followBtn{
+        padding: 6px 30px !important;
+      }
+      .infoProfile{
+        p{
+          margin: 5px;
+        }
+        .userName{
+          font-size: 19px !important;
+        }
+      }
+    }
+  }
+}

@@ -10,14 +10,15 @@
   top: 0;
   left: 0;
   z-index: 99999;
-  background: rgba(0, 0, 0, 0.4)
-    url("https://wallpaperaccess.com/full/158867.jpg");
+  background: rgba(0, 0, 0, 0.4) url("https://wallpaperaccess.com/full/158867.jpg");
   background-size: cover;
+
   button {
     border: none;
     outline: none;
     margin: 0 15px;
   }
+
   .saveBtn {
     display: block;
     margin: 10px auto;
@@ -29,6 +30,7 @@
     font-weight: 600;
     box-shadow: 0 2px 3px #f24e1e;
   }
+
   form {
     width: 90%;
     max-width: 600px;
@@ -44,6 +46,7 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5.2px);
     -webkit-backdrop-filter: blur(5.2px);
+
     .form-header {
       width: 100%;
       display: flex;
@@ -79,13 +82,24 @@
       margin-bottom: 15px;
       border: none;
       border-bottom: 2px solid #f24e1e;
+
       &:focus {
         border: 2px solid #f24e1e;
         border-radius: 50px;
       }
+
       &::autofill {
         background-color: white !important;
       }
     }
+  }
+}
+
+
+@media screen and (max-width: 410px) and (min-width: 300px) {
+  button {
+    font-size: 14px !important;
+    padding: 7px 15px !important;
+    margin: 0;
   }
 }

@@ -15,14 +15,14 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
           rel="stylesheet">
-
-
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
  <!--Loading-->
+<div class="addImgModal d-none"></div>
  <!-- loading animation -->
- <div class="hello">
+ <div class="hello d-none">
      <img src="./images/loading-logo.svg" alt="">
      <div class="loader">
          <span></span>
@@ -33,19 +33,17 @@
  </div>
 
 <!-- Header qismi -->
-<header class="shadow px-5 py-4">
+<header class="shadow">
     <img class="rounded" id="logo" src="./images/swipegoLogo.svg" alt="swipego-logo">
     <img class="rounded" id="logocam" src="./images/Group%201.png" alt="swipego-logo">
-    <form class="search-form  mx-5">
-        <input type="text" placeholder="Search..." class="">
+    <form class="search-form">
+        <input type="text" placeholder="Search..." class="w-100">
     </form>
-    <div class="me-2">
+    <div class="mx-2">
         <input type="checkbox" class="checkbox" id="checkbox">
         <label for="checkbox" class="label">
             <i class="far fa-sun"></i>
             <i class="fas fa-moon"></i>
-            <!-- <i class='fas fa-sun'></i> -->
-            <div class='ball'> </div>
         </label>
     </div>
     <div class="logIn" id="logInBox">
@@ -56,6 +54,7 @@
     </div>
 </header>
 <div class="bgHideOut d-none"></div>
+
 <div id="userProfileModal" class="shadow px-3 py-2 hideProfile"></div>
 
 
@@ -83,22 +82,28 @@
         <section>
             <div class="container brand-part">
                 <div class="row">
-                    <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+                    <div id="title" class="col-12 col-lg-6 d-flex flex-column justify-content-center">
                         <h1 class="display-5 fw-bold text-uppercase">
                             Swipe, <span style="color:#f24e1e"> get </span> more ideas and <span style="color:#f24e1e"> save </span> memories with us
                         </h1>
                         <p style="font-size: 20px; font-weight: 300; margin-top: 20px;">
                             Click once - save. Swipe more - see the masterpieces...
                         </p>
+
+                        <div class="d-flex team-about">
+                            <a href="./about/about.html">About Us</a>
+                            <a href="./team/team.html">Our Team</a>
+                        </div>
                     </div>
                     <div class="col-12 col-lg-6">
-                        <img class="img-fluid" src="./images/65678-photo-book-animation.gif" alt="">
+                        <img id="girl-photo" class="img-fluid" src="./images/animation_white.gif" alt="">
                     </div>
                 </div>
             </div>
         </section>
 
-
+<div id="userAccount"></div>
+<div class="gallery" id="profileGallery"></div>
         <div class="gallery" id="usersGallery"></div>
         <div class="gallery" id="apiGallery"></div>
         <a class="load-more " data-img="curated">Load More</a>

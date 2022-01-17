@@ -1,0 +1,55 @@
+#about .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#about .line {
+  height: 3px;
+  width: 100%;
+  background: #000;
+  opacity: 0.6;
+}
+
+body.dark {
+  transition: 0.5s;
+  color: white !important;
+  background-color: #2f3640;
+}
+body.dark .card {
+  background-color: #2f3640;
+  color: white;
+}
+body.dark .fa-moon {
+  display: none;
+}
+body.dark .fa-sun {
+  display: block;
+  cursor: pointer;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 25px;
+  height: 25px;
+  transform: scale(1.5);
+  margin-top: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+.label .fa-moon {
+  display: block;
+  color: black;
+  cursor: pointer;
+}
+.label .fa-sun {
+  display: none;
+  color: #ff7300;
+}
+
+/*# sourceMappingURL=about.css.map */

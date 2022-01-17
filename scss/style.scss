@@ -7,6 +7,13 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 50;
 }
+
+
+
+.form-control:focus {
+box-shadow: none;
+}
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -33,6 +40,7 @@ header {
   z-index: 999;
   width: 100%;
   max-width: 1550px;
+  padding: 20px 50px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -43,7 +51,8 @@ header {
     height: 60px;
     cursor: pointer;
   }
-  #logocam{
+
+  #logocam {
     height: 40px;
     display: none;
   }
@@ -55,7 +64,7 @@ header {
 
     input {
       border: none;
-      padding: 5px 20px;
+      padding: 7px 20px;
       outline: none;
       border-radius: 50px;
       width: 100%;
@@ -70,9 +79,9 @@ header {
 
   .logIn {
     .logInBtn {
-      padding: 8px 40px;
+      width: 120px;
+      padding: 8px 0px;
       border-radius: 50px;
-      // background: rgb(242, 78, 30);
       background-image: $color-primary-btn;
       box-shadow: 0 2px 4px rgba(255, 122, 5, 0.5);
       color: $test-color;
@@ -84,12 +93,15 @@ header {
   }
 
   .profile {
+
+
     img {
       width: 45px;
       height: 45px;
       border-radius: 50%;
       object-fit: cover;
       cursor: pointer;
+      box-shadow: 0 1px 4px 2px rgba(0, 0, 0, 0.3);
     }
   }
 }
@@ -103,6 +115,7 @@ section {
     position: fixed;
     padding: 20px 0;
     z-index: 990;
+    top: 70 !important;
     left: 0;
     width: 300px;
     height: 100%;
@@ -168,7 +181,8 @@ section {
         font-weight: 400;
         margin: 0;
 
-        &:hover, &.active {
+        &:hover,
+        &.active {
           background-image: $color-primary-btn;
           color: white;
         }
@@ -217,7 +231,7 @@ section {
     width: 100%;
 
     .gallery {
-      column-count: 4;
+      column-count: 5;
       margin: 0 auto;
       padding: 30px 50px;
 
@@ -229,7 +243,6 @@ section {
         position: relative;
         border-radius: 16px;
         overflow: hidden;
-        //margin-bottom: 30px;
 
         &:hover {
           box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -246,6 +259,7 @@ section {
 
         img {
           width: 100%;
+          min-height: 150px;
           object-fit: cover;
           border-radius: 16px;
           transition: all 0.5s;
@@ -276,7 +290,6 @@ section {
             width: 40px;
             border-radius: 50%;
             background-color: red;
-            color: $test-color;
           }
 
           .comment {
@@ -285,8 +298,7 @@ section {
             width: 100px;
             height: 35px;
             font-size: 18px;
-            color: $test-color;
-
+            color: white;
             i {
               color: red;
               font-size: 32px;
@@ -302,6 +314,7 @@ section {
             border-radius: 50%;
             background-color: $color-bg;
             font-size: 20px;
+            color: black !important;
           }
 
           .nuqta {
@@ -312,6 +325,7 @@ section {
             border-radius: 50%;
             background-color: $color-bg;
             font-size: 20px;
+            color: black !important;
           }
         }
       }
@@ -334,19 +348,6 @@ section {
   }
 }
 
-@media screen and (max-width: 1024px) {
-  .gallery {
-    column-count: 3;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .gallery {
-    column-count: 2;
-  }
-}
-
-
 .hello {
   display: flex;
   flex-direction: column;
@@ -364,10 +365,11 @@ section {
     width: 250px;
     height: auto;
     position: absolute;
-    z-index: 123123123123123123123123;
+    z-index: 1231231231233;
   }
 
 }
+
 //loading ----------------------------------------------------------------
 .loader {
   position: relative;
@@ -427,91 +429,127 @@ section {
 
 //responsive
 
-@media screen and (max-width: 1110px) and (min-width: 775.01px){
-  section{
-    main{
+@media screen and (max-width: 1110px) and (min-width: 775.01px) {
+  section {
+    main {
       .gallery {
         padding: 30px 40px 10px 40px;
         column-count: 4;
       }
-    }
-    aside{
+     
+      
+    } 
+
+    aside {
       top: 134px;
     }
 
   }
 }
+@media screen and (max-width:990px) and (min-width:200px) {
+  #title{
+    text-align: center;
+    padding: 50px 30px 10px 30px;
+  }
+  .team-about{
+    justify-content: center;
+      }
+  #girl-photo{
+    display: block;
+    margin: 0 auto;
+      }
+}
 
 @media screen and (max-width: 775px) and (min-width: 490.01px) {
-  #logocam{
+  #logocam {
     display: inline-block !important;
   }
-  #logo{
+
+  #logo {
     display: none !important;
   }
-  header{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 15px 35px !important;
-    .logIn{
-      .logInBtn{
-        width:65px;
 
-        font-size:17px;
-        padding: 6px 11px;
-      }
-    }
+  header {
+    padding: 15px 35px !important;
   }
-  section{
-    aside{
+
+  section {
+    aside {
       top: 70px !important;
     }
-    main{
+
+    main {
       .gallery {
         padding: 30px 30px 10px 30px;
-        column-count: 3;
+        column-count: 3 ;
 
       }
     }
   }
 }
+
+
 @media screen and (max-width: 490px) and (min-width: 200px) {
-  header{
+  header {
     display: flex;
     flex-wrap: wrap;
     padding: 25px !important;
+    #logo{
+      height: 40px;
+    }
     form {
       order: 3;
       margin-top: 10px;
       width: 100%;
 
     }
-    .logIn{
-      .logInBtn{
-        width:65px;
 
-        font-size:16px;
-        padding: 6px 13px;
-      }
-    }
   }
-  section{
 
-
-
-    aside{
+  section {
+    aside {
       width: 260px;
-      top: 134px;
-      &.hide{
+      top: 140px !important;
+
+      &.hide {
         left: -260px;
       }
     }
-    main{
+
+    main {
       .gallery {
         padding: 30px 20px 10px 20px;
-        column-count:2;
+        column-count: 2;
       }
     }
   }
+  .team-about{
+    a{
+      font-size: 15px !important;
+      width: 250px !important;
+      padding: 5px 10px !important;
+    }
+  }
+  .load-more{
+    width: 200px !important;
+    font-size: 16px !important;
+    padding: 10px !important;
+    margin: 0;
+  }
 }
+
 //------------------------------------------------------------------------
+
+@media screen and (max-width: 650px) and (min-width: 200px) {
+  .comment {
+    display: flex;
+    left: 10px;
+    top: 15px;
+  }
+  .cloud {
+    left: 20px;
+  }
+  .nuqta {
+    right: 20px;
+  }
+}
