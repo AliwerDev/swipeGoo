@@ -156,7 +156,7 @@ section {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px;
+        padding: 10px 15px;
         span{
           font-size: 18px;
           &:nth-child(2){
@@ -340,6 +340,12 @@ section {
             background-color: $color-bg;
             font-size: 20px;
             color: black !important;
+            overflow: hidden;
+
+            img{
+              width: 35px !important;
+              height: 35px !important;
+            }
           }
         }
       }

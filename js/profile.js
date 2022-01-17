@@ -48,15 +48,6 @@ function renderProfile(data) {
             ulMenu.classList.add("d-none");
         }
     })
-    const myGallery = myCreateElement("button", {
-        className: "dropdown-item",
-        innerHTML: `<i class="far fa-images"></i> My Gallery`,
-    }, myCreateElement("li", {}, ulMenu));
-
-    myGallery.addEventListener('click', () => {
-        openProfileGallery();
-        otherUserProfile(userUid)
-    });
 
     const editProfileBtn = myCreateElement("button", {
         className: "dropdown-item",
@@ -108,18 +99,20 @@ function renderProfile(data) {
     const infoForm = myCreateElement("form", {className: "info",}, userProfileModal);
     const fullName = myCreateElement("input", {id: "fullName",placeholder: "Full name", className: "w-100", readOnly: true, value: data.fullName || "Full Name"}, infoForm);
     const userName = myCreateElement("input", {id: "userName",placeholder: "User name", required: true, className: "w-100", readOnly: true, value: data.userName}, infoForm);
-    const userBio = myCreateElement("input", {id: "userBio",placeholder: "Bio", required: true, className: "w-100", readOnly: true, value: data.userBio || "Bio"}, infoForm);
+    const userBio = myCreateElement("textarea", {id: "userBio",placeholder: "Bio", required: true, className: "w-100", readOnly: true, value: data.userBio || "Bio"}, infoForm);
 
     //Edit Profile
     editProfileBtn.addEventListener('click', () => {
         fullName.readOnly = false;
-        fullName.focus();
         userName.readOnly = false;
         userBio.readOnly = false;
+        fullName.focus();
+        editProfileBtn.classList.add("d-none");
 
         const saveBtn = myCreateElement("button", {className: "updateProfile btn btn-primary", innerHTML: `<i class="fas fa-check"></i>`}, infoForm);
 
         saveBtn.addEventListener('click', () => {
+            editProfileBtn.classList.remove("d-none");
             fullName.readOnly = true;
             userName.readOnly = true;
             userBio.readOnly = true;
@@ -134,8 +127,6 @@ function renderProfile(data) {
             saveBtn.remove();
         })
     })
-
-    const addNewImg = myCreateElement("div", )
 
     changeUserImg.addEventListener('click', () => {
         input.click();
@@ -157,9 +148,21 @@ function renderProfile(data) {
         bgHideOut.classList.add("d-none");
     });
 
+    //My gallery
+    const myGalleryBox = myCreateElement("div", {className: "myGalleryBox py-2"}, userProfileModal)
+    const myGalleryBtn = myCreateElement("button", {
+        className: "myGalleryBtn",
+        innerHTML: `<i class="far fa-images"></i> My Gallery`,
+    }, myGalleryBox);
 
+    myGalleryBtn.addEventListener('click', () => {
+        openProfileGallery();
+        otherUserProfile(userUid);
+        userProfileModal.classList.add("hideProfile");
+        bgHideOut.classList.add("d-none");
+    });
     //Add Img
-    const addImgBox = myCreateElement("div", {className: "addPhotoBox"}, userProfileModal )
+    const addImgBox = myCreateElement("div", {className: "addPhotoBox py-2"}, userProfileModal )
     const addImgBtn = myCreateElement("button", {className: "addImgButton", innerHTML: `<i class="fas fa-plus"></i> Add Img To Gallery`}, addImgBox);
 
     addImgBtn.addEventListener('click', () => {

@@ -213,7 +213,7 @@ section aside #menuUsers .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 15px;
 }
 section aside #menuUsers .header span {
   font-size: 18px;
@@ -376,6 +376,11 @@ section main .gallery .img-box span .nuqta {
   background-color: #f2e9e4;
   font-size: 20px;
   color: black !important;
+  overflow: hidden;
+}
+section main .gallery .img-box span .nuqta img {
+  width: 35px !important;
+  height: 35px !important;
 }
 section main .gallery .add-img {
   width: 100%;
@@ -635,7 +640,7 @@ section main .gallery .add-img i {
   justify-content: center;
   flex-direction: column;
 }
-#userProfileModal .info input {
+#userProfileModal .info input, #userProfileModal .info textarea {
   background-color: transparent;
   text-align: center;
   margin: 0 auto;
@@ -643,6 +648,15 @@ section main .gallery .add-img i {
   padding: 0;
   border: none;
   outline: none;
+}
+#userProfileModal .info input.edit, #userProfileModal .info textarea.edit {
+  color: #f68052;
+}
+#userProfileModal .info textarea {
+  resize: none;
+  overflow: hidden;
+  min-height: 50px;
+  max-height: 100px;
 }
 #userProfileModal .info .userName {
   color: linear-gradient(262deg, #f68052 5%, #f16840 20%, #f24e1e 50%, #f16840 80%, #f68052 95%);
@@ -678,11 +692,11 @@ section main .gallery .add-img i {
   background-color: #fff200;
 }
 
-.addPhotoBox {
+.addPhotoBox, .myGalleryBox {
   display: flex;
   justify-content: center;
 }
-.addPhotoBox .addImgButton {
+.addPhotoBox .addImgButton, .addPhotoBox .myGalleryBtn, .myGalleryBox .addImgButton, .myGalleryBox .myGalleryBtn {
   border: none;
   outline: none;
   font-size: 15px;
@@ -691,7 +705,7 @@ section main .gallery .add-img i {
   padding: 8px 16px;
   color: white;
 }
-.addPhotoBox .addImgButton i {
+.addPhotoBox .addImgButton i, .addPhotoBox .myGalleryBtn i, .myGalleryBox .addImgButton i, .myGalleryBox .myGalleryBtn i {
   color: white !important;
 }
 

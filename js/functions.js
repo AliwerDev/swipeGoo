@@ -155,6 +155,13 @@ const renderImgBox = (imagesData, isAll = false) => {
 				deleteImg(imgData.ownerId, imgData.id);
 			})
 		}
+		else{
+			deleteBtn.innerHTML = "";
+			const img = myCreateElement("img", {className: "userMinImg", src: userDefaultImg}, deleteBtn);
+			deleteBtn.addEventListener('click', () => {
+				otherUserProfile(imgData.ownerId)
+			})
+		}
 	})
 };
 
@@ -187,7 +194,7 @@ const userAccountRender = (data) => {
 	const userName = myCreateElement("p" ,{ className: "userName" , innerHTML:  `${data.userName}`} , infoProfile);
 	const bio = myCreateElement("p" ,{ className: "bio" , innerHTML: `${data.userBio || "User Bio"}`} , infoProfile);
 	if(data.uid !== userUid){
-		const followBtn = myCreateElement("button" , {className: "btn btn-primary",} , infoProfile);
+		const followBtn = myCreateElement("button" , {className: "followBtn",} , infoProfile);
 		if(data["followers"] && data["followers"][userUid]){
 			followBtn.innerHTML = "Unfollow";
 		}

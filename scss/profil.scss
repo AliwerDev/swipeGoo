@@ -80,7 +80,7 @@
     justify-content: center;
     flex-direction: column;
 
-    input {
+    input, textarea {
       background-color: transparent;
       text-align: center;
       margin: 0 auto;
@@ -88,6 +88,15 @@
       padding: 0;
       border: none;
       outline: none;
+      &.edit{
+        color: rgba(246, 128, 82, 1);
+      }
+    }
+    textarea {
+      resize: none;
+      overflow: hidden;
+      min-height: 50px;
+      max-height: 100px;
     }
 
     .userName {
@@ -132,10 +141,10 @@
   }
 }
 
-.addPhotoBox {
+.addPhotoBox, .myGalleryBox {
   display: flex;
   justify-content: center;
-  .addImgButton {
+  .addImgButton, .myGalleryBtn {
     border: none;
     outline: none;
     font-size: 15px;
