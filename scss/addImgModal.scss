@@ -101,7 +101,9 @@
   }
 
   @media screen and (max-width: 768px) {
-
+    .addImgModal{
+      padding: 20px 30px;
+    }
     .row {
       align-items: flex-start;
 
