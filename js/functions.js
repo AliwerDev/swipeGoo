@@ -193,7 +193,7 @@ const userAccountRender = (data) => {
 	const infoProfile = myCreateElement("div" ,{ className: "infoProfile"}, col2);
 	const userName = myCreateElement("p" ,{ className: "userName" , innerHTML:  `${data.userName}`} , infoProfile);
 	const bio = myCreateElement("p" ,{ className: "bio" , innerHTML: `${data.userBio || "User Bio"}`} , infoProfile);
-	if(data.uid !== userUid){
+	if(data.uid !== userUid && userUid !== "notUser"){
 		const followBtn = myCreateElement("button" , {className: "followBtn",} , infoProfile);
 		if(data["followers"] && data["followers"][userUid]){
 			followBtn.innerHTML = "Unfollow";

@@ -29,6 +29,7 @@
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  object-fit: cover;
 }
 .members .row .col-xl-3 .card .text-center {
   transition: 0.3s;

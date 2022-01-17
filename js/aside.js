@@ -11,7 +11,8 @@ const header = document.querySelector("header");
 aside.style.top = header.offsetHeight + "px";
 
 bgHide.addEventListener('click', () => {
-
+	aside.classList.add("hide");
+	bgHide.classList.add("d-none")
 })
 
 arrowBtn.addEventListener('click', () => {
